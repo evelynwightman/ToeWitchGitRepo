@@ -1,0 +1,35 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{5D9DDD95-6857-3E8B-B82C-282CD9E45AE0}") = "Toe Witch", "Assembly-CSharp-firstpass.csproj", "{7638A091-94E3-8D6D-A3EE-0441A7865A2F}"
+EndProject
+Project("{5D9DDD95-6857-3E8B-B82C-282CD9E45AE0}") = "Toe Witch", "Assembly-CSharp.csproj", "{AD99CECD-417C-DEBA-5480-EB8223FABE0C}"
+EndProject
+Project("{5D9DDD95-6857-3E8B-B82C-282CD9E45AE0}") = "Toe Witch", "Assembly-CSharp-Editor.csproj", "{06154867-CCF6-362D-DFA7-9D4AAB84C7AE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7638A091-94E3-8D6D-A3EE-0441A7865A2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7638A091-94E3-8D6D-A3EE-0441A7865A2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7638A091-94E3-8D6D-A3EE-0441A7865A2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7638A091-94E3-8D6D-A3EE-0441A7865A2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD99CECD-417C-DEBA-5480-EB8223FABE0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD99CECD-417C-DEBA-5480-EB8223FABE0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD99CECD-417C-DEBA-5480-EB8223FABE0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD99CECD-417C-DEBA-5480-EB8223FABE0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06154867-CCF6-362D-DFA7-9D4AAB84C7AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06154867-CCF6-362D-DFA7-9D4AAB84C7AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06154867-CCF6-362D-DFA7-9D4AAB84C7AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06154867-CCF6-362D-DFA7-9D4AAB84C7AE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal

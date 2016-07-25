@@ -1,0 +1,177 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class TramplerController : MovingObject {
+
+	[Header("Stuff to Drop")]
+	public GameObject toe; //the toe we drop when we run away
+	[Header("Stats")]
+	public float startingHealth;
+	public float tramplage; //how much damage our tramping does
+	public float herpTime; //how long to spend herping
+	public float herpWait; //time to wait between looking in a different direction
+	public float nurseryWaitTime; //how long we'll stay out of the nursery
+	[HideInInspector]
+	public bool leaving = false; //are we leaving the yard?
+
+	private float herpCount; //tracks where we are in herping sequence (0 means not herping)
+	private float lifetimeCount; //tracks how long we've been alive
+	private bool entering = true; //are we heading into the yard?
+	private Vector3 herpSpot;
+	private float health;
+	private Vector3 exitPoint;
+	private Vector3 entryPoint;
+	private BoxCollider2D boxCollider;
+
+	// Use this for initialization
+	protected override void Start () {
+		boardManager = GameObject.Find ("Board").GetComponent<BoardManager>();
+		boxCollider = transform.GetComponent<BoxCollider2D> ();
+		base.Start ();
+		herpCount = 0;
+		lifetimeCount = 0;
+		health = startingHealth;
+		exitPoint = new Vector3 (boardManager.columns + 1, boardManager.rows + 2); //make this spawn point
+		entryPoint = new Vector3 ((float)boardManager.columns - 1, Random.Range(0, boardManager.rows -1));
+		entering = true;
+	}
+
+	//Sets everything back to default
+	public void Restart (){
+		leaving = false;
+		boxCollider.size = boxCollider.size*4;
+		Start ();
+	}
+	
+	// Update is called once per frame
+	protected override void Update () {
+		lifetimeCount++;
+
+		if (leaving){
+			LeaveYard ();
+		}
+		else if (entering) {
+			EnterYard();
+		}
+		else if (moving) {
+			MoveInYard (endPoint);
+		}
+		//if we're not moving or herping
+		if (!moving && herpCount == 0){
+			//herp derp and go to a new random spot
+			StartCoroutine(HerpDerp());
+		}
+		base.Update ();
+	}
+
+	void OnCollisionEnter2D(Collision2D other){
+		//porch wall
+		if (other.gameObject.tag == "Boundary") {
+			//stop moving
+			moving = false;
+			//herp derp and go to a new random spot
+			StartCoroutine(HerpDerp());
+		}
+	}
+
+	/* TakeDamage
+	 * Takes damage and tells us to run away if we're too hurt
+	 */
+	public void TakeDamage(float damage){
+		//take damage
+		health = health - damage;
+		//handle visuals
+		animator.SetTrigger ("damage");
+		//if we're at 0 health
+		if (health == 0) {
+			//run away
+			leaving = true;
+			boxCollider.size = boxCollider.size/4;
+			DropToe ();
+		}
+	}
+
+	/* DropToe
+	 * Instantiates a new toe at current position
+	 */
+	void DropToe(){
+		Quaternion spawnRotation = Quaternion.identity;
+		toe = (GameObject)Instantiate (toe, transform.position, spawnRotation);
+	}
+
+	/* HerpDerp
+	 * Gets a new spot to move to. Simulates indecision. Flips Trampler back and forth for herpTime.
+	 */
+	IEnumerator HerpDerp(){
+		animator.SetBool ("walking", false);
+		while (herpCount < herpTime) {
+			herpSpot = getRandomSpotInYard ();
+			FaceSprite (herpSpot);
+			herpCount++;
+			yield return new WaitForSeconds (herpWait);
+		}
+		herpCount = 0;
+		endPoint = herpSpot;
+		moving = true;
+		animator.SetBool ("walking", true);
+	}
+
+	/* getRandomSpotInYard
+	 * Returns a random position within the bounds of the yard
+	 * Handles nursery wait time and keeps trampler off porch
+	 */
+	Vector3 getRandomSpotInYard(){
+		//get a random spot in the yard
+		Vector3 random = new Vector3(Random.Range(boardManager.yardWest + .5f, boardManager.yardEast - .5f), 
+			Random.Range(boardManager.yardSouth + .5f, boardManager.yardNorth - .5f), 0.0f);
+		
+		//if you haven't been around longer than your nurseryWaitTime, don't go into the nursery
+		if (nurseryWaitTime > lifetimeCount * Time.deltaTime && boardManager.IsInNursery(random)) {
+			return getRandomSpotInYard ();
+		} 
+		//don't ever go onto the porch
+		if (boardManager.IsOnPorch(random)) {
+			return getRandomSpotInYard ();
+		}
+		return random;
+	}
+
+	/* LeaveYard
+	 * Handles running back to the spawn point
+	 */
+	void LeaveYard(){
+		moving = true;
+		speed = runningSpeed;
+		//if we're still in the yard, leave
+		if (transform.position.x < boardManager.yardEast) {
+			endPoint = new Vector3 (boardManager.columns, transform.position.y, 0f);
+		} //once we're out, head back to the spawn point which will reset us
+		else {
+			endPoint = exitPoint;
+		}
+		//handle visuals
+		animator.SetBool ("running", true);
+		FaceSprite (endPoint);
+
+		//move towards endPoint
+		transform.position = Vector3.MoveTowards (transform.position, endPoint, speed * Time.deltaTime); 
+	}
+
+	/* EnterYard
+	 * Handles walking into yard
+	 */
+	void EnterYard(){
+		moving = true;
+		animator.SetBool ("walking", true);
+		//if we're not at entry point
+		if (!Mathf.Approximately (transform.position.magnitude, entryPoint.magnitude)) {
+			//move toward it
+			FaceSprite (entryPoint);
+			transform.position = Vector3.MoveTowards (transform.position, entryPoint, speed * Time.deltaTime);
+		} else {
+			//we have arrive: set the variables
+			entering = false;
+			moving = false;
+		}
+	}
+}
