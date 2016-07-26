@@ -42,8 +42,8 @@ public class PickupController : MonoBehaviour {
 		} 
 		//If we are a toe
 		else if (transform.tag == "Toe") {
-			//We can go in the nursery
-			if (boardManager.IsInNursery (location) && !boardManager.IsOnPorch (location)) {
+			//We can go on top of a plant
+			if (GetComponentInChildren<ObjectCombiner> ().FindPlant (transform.FindChild("Shadow").position) != null) {
 				return true;
 			}
 		}

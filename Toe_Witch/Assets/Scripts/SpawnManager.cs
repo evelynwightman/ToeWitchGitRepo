@@ -21,7 +21,7 @@ public class SpawnManager : MonoBehaviour {
 		waitingTramplers.Remove (other.gameObject);
 	}
 
-	public void SpawnTrampler(){
+	public GameObject SpawnTrampler(){
 		GameObject trampler;
 		//note: This won't spawn a new trampler until the previously spawned one has left the spawn point
 		if (waitingTramplers.Count == 0) {
@@ -36,5 +36,6 @@ public class SpawnManager : MonoBehaviour {
 			trampler.SetActive(true);
 			trampler.GetComponent<TramplerController>().Restart();
 		}
+		return trampler;
 	}
 }

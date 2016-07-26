@@ -27,6 +27,9 @@ public class Slot{
 		//tell the item its no longer in the inventory
 		item.GetComponent<PickupController> ().inInventory = false;
 
+		//update the counter
+		counter.GetComponentInChildren<Text>().text = contents.Count.ToString();
+
 		//if we just removed our last item, set item type to null
 		if (contents.Count == 0) {
 			itemType = null;
@@ -70,15 +73,12 @@ public class InventoryController : MonoBehaviour {
 			GameObject counter = Instantiate(counterPrefab);
 			//set as child of canvas
 			counter.transform.SetParent(canvas.transform);
-			Debug.Log ("initial counter position " + counter.transform.position);
 			//set position
 			counter.transform.position = new Vector3(x + .5f, 7, 0f);
-			Debug.Log ("counter position " + counter.transform.position);
 			//set inactive
 			counter.SetActive(false);
 			//give reference to slot
 			slot.counter = counter;
-			Debug.Log ("final counter position " + slot.counter.transform.position);
 
 			slots.Add(slot);
 		}

@@ -6,6 +6,7 @@ public class ObjectCombiner : MonoBehaviour {
 	public GameObject Tomatoe;
 
 	private GameObject newThing;
+	private Vector3 fake = new Vector3 (-50, -50, -50);
 
 	void ExecuteCombination(GameObject plant){
 
@@ -40,7 +41,6 @@ public class ObjectCombiner : MonoBehaviour {
 
 	public void Combine(){
 		GameObject plant = FindPlant ();
-		Debug.Log ("plant = ", plant);
 
 		if (plant != null) {
 			ExecuteCombination(plant);
@@ -48,15 +48,17 @@ public class ObjectCombiner : MonoBehaviour {
 	}
 
 	GameObject FindPlant(){
+		return FindPlant (transform.position);
+	}
+
+	public GameObject FindPlant(Vector3 position){
 		//Find all the things that are also on this spot
 		RaycastHit2D[] hits;
-		Ray ray = new Ray (Camera.main.transform.position, transform.position - Camera.main.transform.position);
+		Ray ray = new Ray (Camera.main.transform.position, position - Camera.main.transform.position);
 		hits = Physics2D.RaycastAll (ray.origin, ray.direction);
-		Debug.Log ("len hits = " + hits.Length);
 
 		//If any of them are a plant, return the plant
 		foreach (UnityEngine.RaycastHit2D item in hits){
-			Debug.Log ("hit " + item.transform.tag);
 			if (item.transform.tag == "Plant" || item.transform.tag == "FightingPlant") {
 				return item.transform.gameObject;
 			}

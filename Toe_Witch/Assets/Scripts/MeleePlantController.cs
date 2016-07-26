@@ -16,8 +16,6 @@ public class MeleePlantController : FloraController {
 	protected override void Start () {
 		base.Start();
 		animator = GetComponent<Animator> ();
-		//start tipped over (not planted)
-
 	}
 	
 	// Update is called once per frame
@@ -33,6 +31,10 @@ public class MeleePlantController : FloraController {
 	}
 
 	protected override void OnTriggerEnter2D(Collider2D other){
+		//unless we're a seed
+		if (isSeed) {
+			return;
+		}
 		//if we're planted
 		if (planted) {
 			//handle being damaged
@@ -48,6 +50,10 @@ public class MeleePlantController : FloraController {
 	}
 
 	void OnTriggerExit2D(Collider2D other){
+		//unless we're a seed
+		if (isSeed) {
+			return;
+		}
 		//if it's a trampler
 		if (other.tag == "Trampler") {
 			//it's no longer in range
