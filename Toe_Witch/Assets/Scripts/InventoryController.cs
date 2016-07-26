@@ -1,22 +1,88 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
+
+public class Slot{
+	public string itemType = null;
+	public List<GameObject> contents = new List<GameObject>();
+	public Vector3 position;
+	public GameObject counter;
+
+	public void Add(GameObject item){
+		contents.Add (item);
+		itemType = item.tag;
+		//tell the item it's in the inventory
+		item.GetComponent<PickupController> ().inInventory = true;
+
+		//if there's more than one item, set the counter
+		if (contents.Count > 1) {
+			counter.SetActive (true);
+			counter.GetComponentInChildren<Text>().text = contents.Count.ToString();
+		}
+	}
+
+	public void Remove(GameObject item){
+		contents.Remove (item);
+		//tell the item its no longer in the inventory
+		item.GetComponent<PickupController> ().inInventory = false;
+
+		//if we just removed our last item, set item type to null
+		if (contents.Count == 0) {
+			itemType = null;
+		}
+
+		//if we just removed our second to last item, turn off the counter
+		if (contents.Count <= 1) {
+			counter.SetActive (false);
+		}
+	}
+}
 
 public class InventoryController : MonoBehaviour {
 
-	public int slots;
+	public int numSlots;
 	public float slotSize;
 	public float slotGapSize;
 	public float speed;
+	public GameObject canvas;
+	public GameObject counterPrefab;
 
-	private List<GameObject> items;
-	private Dictionary<GameObject, Vector3> movingItems;
+	private List<Slot> slots; //list of Slot objects which can be filled with items
+	private Dictionary<GameObject, Vector3> movingItems; //items currently moving <item, 
 	private List<GameObject> deathRow = new List<GameObject>();
 
-	private void Start(){
-		items = new List<GameObject>();
-		transform.localScale = new Vector3(slots * slotSize + (slots + 1) * slotGapSize, 
+	void Start(){
+		//size inventory GameObject to the number of slots we have
+		transform.localScale = new Vector3(numSlots * slotSize + (numSlots + 1) * slotGapSize, 
 			transform.localScale.y + 2*slotGapSize, 0f);
+		
+		slots = new List<Slot> ();
+		//fill "slots" with slot objects
+		for (int i=0; i < numSlots; i++){
+			Slot slot = new Slot();
+			//put new slot in position (this is fake - it has no GameObject associated with it)
+			//inventory position - half inventory width aligns with left edge, + half slot to center, + however many slots to the right
+			float x = transform.position.x - transform.localScale.x / 2  + .5f * slotSize + i * slotSize + i * slotGapSize;
+			slot.position = new Vector3(x, transform.position.y, 0f);
+
+			//make a new counter object 
+			GameObject counter = Instantiate(counterPrefab);
+			//set as child of canvas
+			counter.transform.SetParent(canvas.transform);
+			Debug.Log ("initial counter position " + counter.transform.position);
+			//set position
+			counter.transform.position = new Vector3(x + .5f, 7, 0f);
+			Debug.Log ("counter position " + counter.transform.position);
+			//set inactive
+			counter.SetActive(false);
+			//give reference to slot
+			slot.counter = counter;
+			Debug.Log ("final counter position " + slot.counter.transform.position);
+
+			slots.Add(slot);
+		}
+		
 		movingItems = new Dictionary<GameObject, Vector3>();
 	}
 
@@ -42,41 +108,59 @@ public class InventoryController : MonoBehaviour {
 	 * Returns true if item was successfully added to inventory, false otherwise
 	 */
 	public void Add(GameObject item){
-		//if there's room in inventory
-		if (items.Count < slots) {
-			//add the item
-			PutInSlot (item, items.Count + 1);
-			items.Add (item);
-			item.GetComponent<PickupController> ().inInventory = true;
+		foreach (Slot slot in slots) {
+			//if there's a slot holding this kind of thing already
+			if (slot.itemType == item.tag){
+				//add this thing to that slot
+				slot.Add (item);
+				//set the item to zoom into place in that slot
+				movingItems.Add(item, slot.position);
+				return;
+			}
 		}
+
+		//otherwise, add the item to the first empty slot
+		foreach (Slot slot in slots) {
+			if (slot.itemType == null) {
+				slot.Add (item);
+				movingItems.Add(item, slot.position);
+				return;
+			}
+		}
+		//if there's no empty slot nothing happens
 	}
 
 	public void Remove(GameObject item){
-		//remove the item from the list
-		items.Remove (item);
-		item.GetComponent<PickupController> ().inInventory = false;
+		foreach (Slot slot in slots) {
+			if (slot.itemType == item.tag) {
+				slot.Remove (item);
+				ReShuffle ();
+				return;
+			}
+		}
+
 		//reposition the remaining items on screen
 		ReShuffle();
 	}
 
 	void ReShuffle(){
-	int slot = 0;
-		foreach (GameObject i in items) {
-			PutInSlot (i, slot);
-			slot++;
+		//for each slot
+		for (int i = 0; i < numSlots; i++) {
+			//if the slot is empty
+			if (slots [i].itemType == null) {
+				//check all subsequent slots
+				for (int j = i; j < numSlots; j++) {
+					//if you find one with stuff in it
+					if (slots [j].itemType != null) {
+						//move all the stuff into the empty slot
+						foreach (GameObject item in slots[j].contents) {
+							slots [j].Remove (item);
+							slots [i].Add (item);
+							break;
+						}
+					}
+				}
+			}
 		}
 	}
-
-	/* PutInSlot
-	 * Moves given game object to position of given slot in inventory
-	 */
-	void PutInSlot(GameObject item, int slot){
-		//inventory position - half inventory width + half item width -> aligns item left edge with inventory left edge
-		float offset = transform.position.x - transform.localScale.x / 2 + item.transform.localScale.x / 2;
-		//from edge move in however many slots and gaps
-		float x = offset + (slot-1) * slotSize + slot * slotGapSize;
-		//set the item to zoom into place
-		movingItems.Add(item, new Vector3(x, transform.position.y, 0f));
-	}
-
 }

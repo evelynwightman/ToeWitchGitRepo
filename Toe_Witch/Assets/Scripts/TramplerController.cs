@@ -3,8 +3,9 @@ using System.Collections;
 
 public class TramplerController : MovingObject {
 
-	[Header("Stuff to Drop")]
+	[Header("Dropping Stuff")]
 	public GameObject toe; //the toe we drop when we run away
+	public float chanceToDrop; //the probability that we will drop a toe (should be between 0 and 1)
 	[Header("Stats")]
 	public float startingHealth;
 	public float tramplage; //how much damage our tramping does
@@ -87,7 +88,10 @@ public class TramplerController : MovingObject {
 			//run away
 			leaving = true;
 			boxCollider.size = boxCollider.size/4;
-			DropToe ();
+			//maybe drop a toe
+			if (Random.Range (0, 1) < chanceToDrop) {
+				DropToe ();
+			}
 		}
 	}
 
