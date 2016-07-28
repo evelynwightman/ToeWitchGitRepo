@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class MeleePlantController : FloraController {
 
@@ -11,11 +12,15 @@ public class MeleePlantController : FloraController {
 	private GameObject hitTarget;
 	private float hitCountdown = 0;
 	private Animator animator;
+	private Image healthBar;
+	private AudioSource audioSource;
 
 	// Use this for initialization
 	protected override void Start () {
 		base.Start();
 		animator = GetComponent<Animator> ();
+		audioSource = GetComponent<AudioSource> ();
+		healthBar = transform.FindChild ("PlantCanvas").FindChild ("HealthBackground").FindChild ("Health").GetComponent<Image> ();
 	}
 	
 	// Update is called once per frame
@@ -68,7 +73,30 @@ public class MeleePlantController : FloraController {
 	void hit(GameObject target){
 		//handle visuals
 		animator.SetTrigger ("hit");
+		//handle sound
+		audioSource.Play();
 		//deal damage
 		hitTarget.GetComponent<TramplerController> ().TakeDamage (hitStrength);
+	}
+
+	protected override void TakeDamage(float damage){
+		base.TakeDamage (damage);
+
+		//update health bar
+		healthBar.fillAmount = (float)health / (float)startingHealth;
+		//color health bar
+		Debug.Log("healthBar.fillAmount = " + healthBar.fillAmount);
+		if (healthBar.fillAmount <= .3f) {
+			healthBar.color = Color.red;
+		} else if (healthBar.fillAmount <= .5f) {
+			healthBar.color = Color.yellow;
+		} else {
+			healthBar.color = Color.green;
+		}
+
+		//check if dead
+		if (health <= 0) {
+			Die ();
+		}
 	}
 }
