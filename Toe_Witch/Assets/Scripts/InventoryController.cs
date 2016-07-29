@@ -50,6 +50,7 @@ public class InventoryController : MonoBehaviour {
 	public float speed;
 	public GameObject canvas;
 	public GameObject counterPrefab;
+	public int maxSlotCapacity;
 
 	private List<Slot> slots; //list of Slot objects which can be filled with items
 	private Dictionary<GameObject, Vector3> movingItems; //items currently moving <item, 
@@ -59,7 +60,7 @@ public class InventoryController : MonoBehaviour {
 		//size inventory GameObject to the number of slots we have
 		transform.localScale = new Vector3(numSlots * slotSize + (numSlots + 1) * slotGapSize, 
 			transform.localScale.y + 2*slotGapSize, 0f);
-		
+
 		slots = new List<Slot> ();
 		//fill "slots" with slot objects
 		for (int i=0; i < numSlots; i++){
@@ -82,7 +83,7 @@ public class InventoryController : MonoBehaviour {
 
 			slots.Add(slot);
 		}
-		
+
 		movingItems = new Dictionary<GameObject, Vector3>();
 	}
 
@@ -109,8 +110,8 @@ public class InventoryController : MonoBehaviour {
 	 */
 	public void Add(GameObject item){
 		foreach (Slot slot in slots) {
-			//if there's a slot holding this kind of thing already
-			if (slot.itemType == item.tag){
+			//if there's a slot holding this kind of thing already and it's not full
+			if (slot.itemType == item.tag && slot.contents.Count < maxSlotCapacity){
 				//add this thing to that slot
 				slot.Add (item);
 				//set the item to zoom into place in that slot
