@@ -12,15 +12,32 @@ public class MeleePlantController : FloraController {
 	private GameObject hitTarget;
 	private float hitCountdown = 0;
 	private Animator animator;
-	private Image healthBar;
+	private GameObject healthBar;
+	private GameObject daysRemainingBar;
 	private AudioSource audioSource;
 
 	// Use this for initialization
 	protected override void Start () {
 		base.Start();
+		//Find components
 		animator = GetComponent<Animator> ();
 		audioSource = GetComponent<AudioSource> ();
-		healthBar = transform.FindChild ("PlantCanvas").FindChild ("HealthBackground").FindChild ("Health").GetComponent<Image> ();
+		healthBar = transform.FindChild ("PlantCanvas").FindChild ("HealthBackground").FindChild ("Health").gameObject;
+		daysRemainingBar = transform.FindChild ("PlantCanvas").FindChild ("DaysRemaining").gameObject;
+
+		//Align daysRemainingBar
+		Vector3 position = daysRemainingBar.transform.GetComponent<RectTransform>().localPosition;
+		daysRemainingBar.transform.GetComponent<RectTransform>().localPosition = new Vector3(
+			position.x + .5f - (lifeSpan/2f)*.1f, position.y,	position.z);
+		//Fill daysRemainingBar
+		daysRemainingBar.transform.GetComponent<Image>().fillAmount = lifeSpan*.1f;
+
+		//hide status bars until planted
+		if (!planted) {
+			healthBar.SetActive (false);
+			healthBar.transform.parent.gameObject.SetActive (false);
+			daysRemainingBar.SetActive (false);
+		}
 	}
 	
 	// Update is called once per frame
@@ -83,15 +100,16 @@ public class MeleePlantController : FloraController {
 		base.TakeDamage (damage);
 
 		//update health bar
-		healthBar.fillAmount = (float)health / (float)startingHealth;
+		Image healthImage = healthBar.GetComponent<Image>();
+		healthImage.fillAmount = (float)health / (float)startingHealth;
 		//color health bar
-		Debug.Log("healthBar.fillAmount = " + healthBar.fillAmount);
-		if (healthBar.fillAmount <= .3f) {
-			healthBar.color = Color.red;
-		} else if (healthBar.fillAmount <= .5f) {
-			healthBar.color = Color.yellow;
+		Debug.Log("healthBar.fillAmount = " + healthImage.fillAmount);
+		if (healthImage.fillAmount <= .3f) {
+			healthImage.color = Color.red;
+		} else if (healthImage.fillAmount <= .5f) {
+			healthImage.color = Color.yellow;
 		} else {
-			healthBar.color = Color.green;
+			healthImage.color = Color.green;
 		}
 
 		//check if dead
@@ -99,4 +117,24 @@ public class MeleePlantController : FloraController {
 			Die ();
 		}
 	}
-}
+
+	public override void Age ()
+	{
+		//unless we're planted
+		if(!planted){
+			return;
+		}
+		//call base Age()
+		base.Age ();
+		//decrement daysRemainingBar
+		daysRemainingBar.GetComponent<Image> ().fillAmount = daysRemainingBar.GetComponent<Image> ().fillAmount - .1f;
+	}
+
+	public override void Plant(){
+		base.Plant ();
+		//activate status bars
+		healthBar.SetActive (true);
+		healthBar.transform.parent.gameObject.SetActive (true);
+		daysRemainingBar.SetActive (true);
+	}
+} 

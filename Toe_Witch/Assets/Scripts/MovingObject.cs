@@ -28,6 +28,8 @@ public class MovingObject : MonoBehaviour {
 	protected Animator animator;
 	protected AudioSource audioSource;
 	protected GameObject trackTarget;
+	protected SpriteRenderer spriteRenderer;
+	protected GameObject canvas = null;
 
 	private Vector3 pointer;
 
@@ -38,11 +40,19 @@ public class MovingObject : MonoBehaviour {
 		audioSource = GetComponent<AudioSource> ();
 		endPoint = transform.position;
 		hitCountdown = hitRecharge;
+		spriteRenderer = GetComponent<SpriteRenderer> ();
+		if (transform.FindChild ("PlantCanvas") != null) {
+			canvas = transform.FindChild ("PlantCanvas").gameObject;
+		}
 	}
 
 	protected virtual void Update(){
 		//keep everything overlapping according to y position
-		GetComponent<SpriteRenderer>().sortingOrder = Mathf.RoundToInt(transform.position.y * 100f) * -1;
+		spriteRenderer.sortingOrder = Mathf.RoundToInt(transform.position.y * 100f) * -1;
+
+		if (canvas != null){
+			canvas.GetComponent<Canvas> ().sortingOrder = Mathf.RoundToInt (transform.position.y * 100f) * -1;
+		}
 	}
 
 	/* MoveInYard

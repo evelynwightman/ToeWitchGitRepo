@@ -85,7 +85,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 195182}
   m_LocalRotation: {x: 0, y: 0, z: -0.29237175, w: 0.9563048}
-  m_LocalPosition: {x: 2.14, y: -1.03, z: 0}
+  m_LocalPosition: {x: 3.3647041, y: 1.1461284, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -34}
   m_Children:
@@ -151,8 +151,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inInventory: 0
   pickable: 1
-  putdownRechargeTime: 0
-  putdownRecharge: 0
 --- !u!114 &11485614
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -165,6 +163,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 10
+  isSeed: 1
+  lifeSpan: 2
+  growUpTime: 1
+  seed: {fileID: 21300062, guid: 8732c811ac3ea664094d2081357e1c52, type: 3}
+  sprout: {fileID: 21300042, guid: 8732c811ac3ea664094d2081357e1c52, type: 3}
+  adultPlant: {fileID: 21300000, guid: 5e189a908308a1947ab6f4eb3f4222a8, type: 3}
+  planted: 0
+  health: 0
 --- !u!212 &21217508
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -6,7 +6,6 @@ public class ObjectCombiner : MonoBehaviour {
 	public GameObject Tomatoe;
 
 	private GameObject newThing;
-	private Vector3 fake = new Vector3 (-50, -50, -50);
 
 	void ExecuteCombination(GameObject plant){
 
