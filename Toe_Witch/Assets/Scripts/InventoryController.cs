@@ -45,24 +45,22 @@ public class Slot{
 public class InventoryController : MonoBehaviour {
 
 	public int numSlots;
-	public int maxSlotCapacity;
 	public float slotSize;
 	public float slotGapSize;
 	public float speed;
 	public GameObject canvas;
 	public GameObject counterPrefab;
+	public int maxSlotCapacity;
 
 	private List<Slot> slots; //list of Slot objects which can be filled with items
-	private Dictionary<GameObject, Vector3> movingItems; //items currently moving <item, destination> 
+	private Dictionary<GameObject, Vector3> movingItems; //items currently moving <item, 
 	private List<GameObject> deathRow = new List<GameObject>();
 
 	void Start(){
-		//movingItems = new Dictionary<GameObject, Vector3> ();
-
 		//size inventory GameObject to the number of slots we have
 		transform.localScale = new Vector3(numSlots * slotSize + (numSlots + 1) * slotGapSize, 
 			transform.localScale.y + 2*slotGapSize, 0f);
-		
+
 		slots = new List<Slot> ();
 		//fill "slots" with slot objects
 		for (int i=0; i < numSlots; i++){
@@ -85,12 +83,12 @@ public class InventoryController : MonoBehaviour {
 
 			slots.Add(slot);
 		}
+
+		movingItems = new Dictionary<GameObject, Vector3>();
 	}
 
 	void Update(){
 		//for each item which is moving
-		movingItems = new Dictionary<GameObject, Vector3> ();
-		int a = movingItems.Count;
 		foreach (KeyValuePair<GameObject,Vector3> entry in movingItems) {
 			//if the item has reached its destination, remove it from movingItems
 			if (Mathf.Approximately (entry.Key.transform.position.magnitude, entry.Value.magnitude)) {
@@ -113,7 +111,7 @@ public class InventoryController : MonoBehaviour {
 	public void Add(GameObject item){
 		foreach (Slot slot in slots) {
 			//if there's a slot holding this kind of thing already and it's not full
-			if (slot.itemType == item.tag && slot.contents.Count <= maxSlotCapacity){
+			if (slot.itemType == item.tag && slot.contents.Count < maxSlotCapacity){
 				//add this thing to that slot
 				slot.Add (item);
 				//set the item to zoom into place in that slot
