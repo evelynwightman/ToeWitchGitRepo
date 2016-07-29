@@ -109,5 +109,9 @@ public class MovingObject : MonoBehaviour {
 			facingRight = false;
 		}
 	}
+
+	public void OnDayEnd(){
+		inRange.Clear ();
+	}
 		
 }
