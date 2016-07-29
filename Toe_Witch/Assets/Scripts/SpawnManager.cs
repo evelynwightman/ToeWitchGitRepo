@@ -38,4 +38,8 @@ public class SpawnManager : MonoBehaviour {
 		}
 		return trampler;
 	}
+
+	public void OnDayEnd(){
+		waitingTramplers.Clear ();
+	}
 }

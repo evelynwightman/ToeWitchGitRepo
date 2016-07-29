@@ -36,8 +36,16 @@ public class PickupController : MonoBehaviour {
 	public bool ICanGoHere(Vector3 location){
 		//If we are a plant
 		if (transform.tag == "FightingPlant" || transform.tag == "Plant") {
-			//We can go in the yard but not on the porch
+			//if we are a seed we must go in the nursery
+			if (transform.tag == "Plant") {
+				if (GetComponent<FloraController> ().isSeed && boardManager.IsInNursery (location) && !boardManager.IsOnPorch (location))
+					return true;
+				return false;
+			}
+
+			//otherwise we can go in the yard but not on the porch
 			if (boardManager.IsInYard (location) && !boardManager.IsOnPorch (location))
+				Debug.Log ("return true");
 				return true;
 		} 
 		//If we are a toe

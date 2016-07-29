@@ -112,7 +112,6 @@ public class PlayerController : MovingObject
 			}
 			//if it's a toe, see if there's a plant to combine it with
 			if (itemToPutDown.tag == "Toe") {
-				Debug.Log ("calling combine");
 				itemToPutDown.GetComponentInChildren<ObjectCombiner>().Combine ();
 			}
 			//now we have nothing to put down: update the vars
@@ -120,4 +119,5 @@ public class PlayerController : MovingObject
 			itemToPutDown = null;
 		}
 	}
+		
 }
