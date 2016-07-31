@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿/* ClickHandler
+ * Evelyn Wightman 2016
+ * Handles mouse clicks and dragging. Tells player where to walk to and what to put down.
+ */
+
+using UnityEngine;
 using System.Collections;
 
 public class ClickHandler : MonoBehaviour {
@@ -12,10 +17,6 @@ public class ClickHandler : MonoBehaviour {
 	private GameObject shadow;
 
 	void Start(){
-		player = GameObject.Find ("Player").GetComponent<PlayerController>();
-	}
-
-	void OnLevelWasLoaded(int index){
 		player = GameObject.Find ("Player").GetComponent<PlayerController>();
 	}
 

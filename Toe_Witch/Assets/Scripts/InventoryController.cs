@@ -1,16 +1,33 @@
-﻿using UnityEngine;
+﻿/* InventoryController
+ * Evelyn Wightman 2016
+ * Contains TWO CLASSES, an INVENTORY which manages adding and removing items to/from inventory and organizing 
+ * them within it, and a SLOT which manages the contents of a single slot in inventory.
+ */
+
+/* Slot Class
+ * Manages a single slot in inventory. Handles adding and removing items to/from slot. Can hold multiple items with the
+ * same tag.
+ */
+
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class Slot{
-	public string itemType = null;
+	public string itemType = null; //tag of items currently held. Null when empty
 	public List<GameObject> contents = new List<GameObject>();
 	public Vector3 position;
-	public GameObject counter;
+	public GameObject counter; //diblet to display how many things we have
 
+
+	/* Add
+	 * Adds given item to this slot
+	 */
 	public void Add(GameObject item){
+		//add to contents
 		contents.Add (item);
+		//update tag to match this item
 		itemType = item.tag;
 		//tell the item it's in the inventory
 		item.GetComponent<PickupController> ().inInventory = true;
@@ -22,7 +39,11 @@ public class Slot{
 		}
 	}
 
+	/* Remove
+	 * Removes given item from this slot
+	 */
 	public void Remove(GameObject item){
+		//remove item from contents
 		contents.Remove (item);
 		//tell the item its no longer in the inventory
 		item.GetComponent<PickupController> ().inInventory = false;
@@ -42,6 +63,10 @@ public class Slot{
 	}
 }
 
+
+/* InventoryController Class
+ * Manages adding and removing items to/from inventory and organizing them within it.
+ */
 public class InventoryController : MonoBehaviour {
 
 	public int numSlots;
@@ -84,6 +109,7 @@ public class InventoryController : MonoBehaviour {
 			slots.Add(slot);
 		}
 
+		//init
 		movingItems = new Dictionary<GameObject, Vector3>();
 	}
 
@@ -99,6 +125,7 @@ public class InventoryController : MonoBehaviour {
 			entry.Key.transform.position = Vector3.MoveTowards (entry.Key.transform.position, entry.Value, speed*Time.deltaTime);
 		}
 
+		//remove items marked for death (messes things up if you do it inside the foreach)
 		foreach (GameObject item in deathRow) {
 			movingItems.Remove (item);
 		}
@@ -106,7 +133,6 @@ public class InventoryController : MonoBehaviour {
 
 	/* Add
 	 * Adds given item to inventory
-	 * Returns true if item was successfully added to inventory, false otherwise
 	 */
 	public void Add(GameObject item){
 		foreach (Slot slot in slots) {
@@ -131,19 +157,24 @@ public class InventoryController : MonoBehaviour {
 		//if there's no empty slot nothing happens
 	}
 
+	/* Remove
+	 * Removes given item from inventory
+	 */
 	public void Remove(GameObject item){
+		//check each slot for the item and remove it
 		foreach (Slot slot in slots) {
 			if (slot.itemType == item.tag) {
 				slot.Remove (item);
+				//reshuffle inventory in case we have a gap now
 				ReShuffle ();
 				return;
 			}
 		}
-
-		//reposition the remaining items on screen
-		ReShuffle();
 	}
 
+	/* ReShuffle
+	 * Rearranges items in slots so we don't have gaps left to right
+	 */
 	void ReShuffle(){
 		//for each slot
 		for (int i = 0; i < numSlots; i++) {

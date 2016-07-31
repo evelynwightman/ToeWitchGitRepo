@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿/* MeleePlantController
+ * Evelyn Wightman 2016
+ * Child class of FloraController. Controlls fighting plants. Adds hitting, health bar, and limited lifespan.
+ */
+
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
@@ -16,7 +21,6 @@ public class MeleePlantController : FloraController {
 	private GameObject daysRemainingBar;
 	private AudioSource audioSource;
 
-	// Use this for initialization
 	protected override void Start () {
 		base.Start();
 		//Find components
@@ -39,19 +43,20 @@ public class MeleePlantController : FloraController {
 			daysRemainingBar.SetActive (false);
 		}
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
-		//Deal damage to one trampler which is in range (Let player choose target eventually)
+		//Deal damage to one trampler which is in range
 		if (inRange.Count != 0 && hitCountdown <= 0) {
 			hit (hitTarget);
 			hitCountdown = hitRecharge;
 		}
+
 		hitCountdown = hitCountdown - 1*Time.deltaTime;
-
-
 	}
 
+	/* OnTriggerEnter2D
+	 * Calls base fcn (handles being damaged by trampler). Adds incoming trampler to list of things we can hit.
+	 */
 	protected override void OnTriggerEnter2D(Collider2D other){
 		//unless we're a seed
 		if (isSeed) {
@@ -71,6 +76,9 @@ public class MeleePlantController : FloraController {
 		}
 	}
 
+	/* OnTriggerExit2D
+	 * Removes exiting tramplers from list of things we can hit and assigns a new hit target (if there is one)
+	 */
 	void OnTriggerExit2D(Collider2D other){
 		//unless we're a seed
 		if (isSeed) {
@@ -87,6 +95,9 @@ public class MeleePlantController : FloraController {
 		}
 	}
 
+	/* hit
+	 * Hit the given target. Handles visuals and dealing damage.
+	 */
 	void hit(GameObject target){
 		//handle visuals
 		animator.SetTrigger ("hit");
@@ -96,6 +107,9 @@ public class MeleePlantController : FloraController {
 		hitTarget.GetComponent<TramplerController> ().TakeDamage (hitStrength);
 	}
 
+	/* TakeDamage
+	 * Calls base damage(). Updates health bar and checks if we're dead.
+	 */
 	protected override void TakeDamage(float damage){
 		base.TakeDamage (damage);
 
@@ -118,6 +132,9 @@ public class MeleePlantController : FloraController {
 		}
 	}
 
+	/* Age
+	 * Calls base age and adjusts daysRemainingBar.
+	 */
 	public override void Age ()
 	{
 		//unless we're planted
@@ -130,6 +147,9 @@ public class MeleePlantController : FloraController {
 		daysRemainingBar.GetComponent<Image> ().fillAmount = daysRemainingBar.GetComponent<Image> ().fillAmount - .1f;
 	}
 
+	/* Plant
+	 * Calls base Plant() and activates status bars
+	 */
 	public override void Plant(){
 		base.Plant ();
 		//activate status bars

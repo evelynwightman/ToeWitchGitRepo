@@ -1,4 +1,8 @@
-﻿using UnityEngine;
+﻿/* TramplerController
+ * Evelyn Wightman 2016
+ * What it says on the tin.
+ */
+using UnityEngine;
 using System.Collections;
 
 public class TramplerController : MovingObject {
@@ -24,7 +28,6 @@ public class TramplerController : MovingObject {
 	private Vector3 entryPoint;
 	private BoxCollider2D boxCollider;
 
-	// Use this for initialization
 	protected override void Start () {
 		boardManager = GameObject.Find ("Board").GetComponent<BoardManager>();
 		boxCollider = transform.GetComponent<BoxCollider2D> ();
@@ -37,17 +40,19 @@ public class TramplerController : MovingObject {
 		entering = true;
 	}
 
-	//Sets everything back to default
+	/* Restart 
+	 * Resets defaults so we're ready to go again
+	 */
 	public void Restart (){
 		leaving = false;
 		boxCollider.size = boxCollider.size*4;
 		Start ();
 	}
-	
-	// Update is called once per frame
+
 	protected override void Update () {
 		lifetimeCount++;
 
+		//check flags, do things
 		if (leaving){
 			LeaveYard ();
 		}
@@ -65,6 +70,9 @@ public class TramplerController : MovingObject {
 		base.Update ();
 	}
 
+	/* OnCollisionEnter2D
+	 * If we run into a boundary, find somewhere else to go.
+	 */
 	void OnCollisionEnter2D(Collision2D other){
 		//porch wall
 		if (other.gameObject.tag == "Boundary") {

@@ -1,4 +1,10 @@
-﻿using UnityEngine;
+﻿/* ObjectCombiner
+ * Evelyn Wightman 2016
+ * Lives on the Clickable aspect of toes. When the player puts down a toe, she will call Combine to see if there's 
+ * anything there the toe should combine with. Handles checking the recipes, creating the new hybrid plant, and 
+ * destroying the toe and old plant.
+ */
+using UnityEngine;
 using System.Collections;
 
 public class ObjectCombiner : MonoBehaviour {
@@ -7,6 +13,9 @@ public class ObjectCombiner : MonoBehaviour {
 
 	private GameObject newThing;
 
+	/* ExecuteCombination
+	 * Decides what this toe and the given plant should become when combined. Creates the new thing and destroys the toe and plant.
+	 */
 	void ExecuteCombination(GameObject plant){
 
 		//Find out what they are
@@ -38,6 +47,9 @@ public class ObjectCombiner : MonoBehaviour {
 		Destroy(transform.parent.gameObject);
 	}
 
+	/* Combine
+	 * Check to see if there's a plant to combine with, and if so calls ExecuteCombination to combine with that plant
+	 */
 	public void Combine(){
 		GameObject plant = FindPlant ();
 
@@ -46,10 +58,11 @@ public class ObjectCombiner : MonoBehaviour {
 		}
 	}
 
-	GameObject FindPlant(){
-		return FindPlant (transform.position);
-	}
+	/* FindPlant
+	 * Checks for a plant at given position. If no position given, checks at current position. Returns null if no plant found.
+	 */
 
+	//FindPlant at current position
 	public GameObject FindPlant(Vector3 position){
 		//Find all the things that are also on this spot
 		RaycastHit2D[] hits;
@@ -63,5 +76,9 @@ public class ObjectCombiner : MonoBehaviour {
 			}
 		}
 		return null;
+	}
+	//If no position given, FindPlant at current position
+	GameObject FindPlant(){
+		return FindPlant (transform.position);
 	}
 }

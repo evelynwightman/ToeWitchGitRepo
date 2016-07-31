@@ -1,4 +1,8 @@
-﻿using UnityEngine;
+﻿/* PickupController
+ * Evelyn Wightman 2016
+ * Attached to anything that can be picked up. Handles being picked up, managing its shadow, and knowing where it can go.
+ */
+using UnityEngine;
 using System.Collections;
 
 public class PickupController : MonoBehaviour {
@@ -11,20 +15,24 @@ public class PickupController : MonoBehaviour {
 	void Start(){
 		shadow = transform.FindChild("Shadow").gameObject;
 		SpriteRenderer shadowRenderer = shadow.GetComponent<SpriteRenderer> ();
+		boardManager = GameObject.Find ("Board").GetComponent<BoardManager> ();
+		shadowRenderer.sprite = GetComponent<SpriteRenderer> ().sprite;
 		shadowRenderer.enabled = false;
 		shadowRenderer.color = new Color (1f, 1f, 1f, .5f);
-		shadowRenderer.sprite = GetComponent<SpriteRenderer> ().sprite;
-		boardManager = GameObject.Find ("Board").GetComponent<BoardManager> ();
 		pickable = true;
 	}
 
 	void Update(){
+		//If position has changed, update sorting order accordingly.
 		if (transform.hasChanged) {
 			GetComponent<SpriteRenderer> ().sortingOrder = Mathf.RoundToInt (transform.position.y * 100f) * -1;
 			transform.hasChanged = false;
 		}
 	}
 
+	/* OnTriggerEnter2D
+	 * Says "Pick me!" to they player when she bumps into us.
+	 */
 	void OnTriggerEnter2D(Collider2D other){
 		//if the player runs into us and we can be picked up
 		if (other.tag == "Player" && pickable) {
@@ -33,6 +41,9 @@ public class PickupController : MonoBehaviour {
 		}
 	}
 
+	/* ICanGoHere
+	 * Decides whether we can be put at given location based on our tag. Returns true if we can go there, false if not.
+	 */
 	public bool ICanGoHere(Vector3 location){
 		//If we are a plant
 		if (transform.tag == "FightingPlant" || transform.tag == "Plant") {
@@ -55,12 +66,35 @@ public class PickupController : MonoBehaviour {
 				return true;
 			}
 		}
-
 		return false;
 	}
 
+	/* ReturnShadow
+	 * Turns off shadow and puts it back on top of us.
+	 */
 	public void returnShadow(){
 		shadow.GetComponent<SpriteRenderer>().enabled = false;
 		shadow.transform.position = transform.position;
+	}
+
+	/* Bounce
+	 * Makes us get bigger and then smaller again. A bit of visual bounce for emphasis.
+	 */
+	public IEnumerator Bounce(){
+		Debug.Log ("bounce");
+		Vector3 size = transform.localScale;
+		float increase = 1.25f; //ugh, hard-coded numbers?
+		float bounceSpeed = 2f;
+
+		//increase size
+		while (!Mathf.Approximately(transform.localScale.magnitude, (size * increase).magnitude)) {
+			transform.localScale = Vector3.MoveTowards (transform.localScale, size * increase, bounceSpeed * Time.deltaTime);
+			yield return null;
+		}
+		//decrease size
+		while (!Mathf.Approximately(transform.localScale.magnitude, size.magnitude)) {
+			transform.localScale = Vector3.MoveTowards (transform.localScale, size, bounceSpeed * Time.deltaTime);
+			yield return null;
+		}
 	}
 }

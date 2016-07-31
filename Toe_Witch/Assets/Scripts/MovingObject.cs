@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿/* MovingObject
+ * Evelyn Wightman 2016
+ * Base class for objects which move around under their own volition (player, tramplers). 
+ * Handles moving in yard, facing the right direction for your movement, and updating sorting order based on position
+ */
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -35,21 +40,24 @@ public class MovingObject : MonoBehaviour {
 
 	protected virtual void Start()
 	{
+		//get components
 		rb = GetComponent<Rigidbody2D> ();
 		animator = GetComponent<Animator> ();
 		audioSource = GetComponent<AudioSource> ();
-		endPoint = transform.position;
-		hitCountdown = hitRecharge;
 		spriteRenderer = GetComponent<SpriteRenderer> ();
 		if (transform.FindChild ("PlantCanvas") != null) {
 			canvas = transform.FindChild ("PlantCanvas").gameObject;
 		}
+		//set baselines
+		endPoint = transform.position;
+		hitCountdown = hitRecharge;
 	}
 
 	protected virtual void Update(){
-		//keep everything overlapping according to y position
+		//keep all sprites overlapping according to y position
 		spriteRenderer.sortingOrder = Mathf.RoundToInt(transform.position.y * 100f) * -1;
 
+		//including the canvas if we have one
 		if (canvas != null){
 			canvas.GetComponent<Canvas> ().sortingOrder = Mathf.RoundToInt (transform.position.y * 100f) * -1;
 		}
@@ -110,6 +118,9 @@ public class MovingObject : MonoBehaviour {
 		}
 	}
 
+	/* OnDayEnd
+	 * Clears out list of things we can hit (they may have been vanished)
+	 */
 	public void OnDayEnd(){
 		inRange.Clear ();
 	}

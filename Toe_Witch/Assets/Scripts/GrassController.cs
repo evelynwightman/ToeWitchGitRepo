@@ -1,4 +1,8 @@
-﻿using UnityEngine;
+﻿/* Grass Controller
+ * Evelyn Wightman 2016
+ * Child class of FloraController. Controls grass.
+ */
+using UnityEngine;
 using System.Collections;
 
 public class GrassController : FloraController {
@@ -10,12 +14,13 @@ public class GrassController : FloraController {
 	public Sprite trampledHealth;
 	public Sprite dirt;
 
-	// Use this for initialization
 	protected override void Start () {
 		base.Start();
 	}
 	
-	// Update is called once per frame
+	/* TakeDamage
+	 * Handles taking damage and updating the sprite accordingly.
+	 */
 	protected override void TakeDamage(float damage) {
 		base.TakeDamage(damage);
 		if (health <= 0) {
