@@ -47,9 +47,10 @@ public class PickupController : MonoBehaviour {
 	public bool ICanGoHere(Vector3 location){
 		//If we are a plant
 		if (transform.tag == "FightingPlant" || transform.tag == "Plant") {
-			//if we are a seed we must go in the nursery
+			//if we are a seed we must go in a pot in the nursery
 			if (transform.tag == "Plant") {
-				if (GetComponent<FloraController> ().isSeed && boardManager.IsInNursery (location) && !boardManager.IsOnPorch (location))
+				if(GetComponent<FloraController>().isSeed && boardManager.IsInNursery(location) &&
+					!boardManager.IsOnPorch(location) && PotHere(location))
 					return true;
 				return false;
 			}
@@ -63,6 +64,24 @@ public class PickupController : MonoBehaviour {
 		else if (transform.tag == "Toe") {
 			//We can go on top of a plant
 			if (GetComponentInChildren<ObjectCombiner> ().FindPlant (transform.FindChild("Shadow").position) != null) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/* PotHere
+	 * Returns true if there's a pot at current location, false otherwise.
+	 */
+	bool PotHere(Vector3 location){
+		//Find all the things that are also on this spot
+		RaycastHit2D[] hits;
+		Ray ray = new Ray (Camera.main.transform.position, location - Camera.main.transform.position);
+		hits = Physics2D.RaycastAll (ray.origin, ray.direction);
+
+		//If any of them are a pot, return true
+		foreach (UnityEngine.RaycastHit2D item in hits){
+			if (item.transform.tag == "Pot") {
 				return true;
 			}
 		}

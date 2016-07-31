@@ -12,6 +12,7 @@ TagManager:
   - FightingPlant
   - Pickup
   - Toe
+  - Pot
   layers:
   - Default
   - TransparentFX

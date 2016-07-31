@@ -98,6 +98,9 @@ public class ClickHandler : MonoBehaviour {
 			Vector3 currentPosition = Camera.main.ScreenToWorldPoint(currentScreenSpace) + offset;
 			//Update target gameobject's current postion.
 			shadow.transform.position = currentPosition;
+			//make sure we have an item to put down
+			if (player.itemToPutDown == null)
+				return;
 			//If the object could go here
 			if (player.itemToPutDown.GetComponent<PickupController> ().ICanGoHere (currentPosition)) {
 				//make the shadow normal colored
@@ -106,6 +109,7 @@ public class ClickHandler : MonoBehaviour {
 				//make the shadow red
 				shadow.transform.GetComponent<SpriteRenderer> ().color = new Color (1f, 0f, 0f, .5f);
 			}
+
 		}
 	}
 

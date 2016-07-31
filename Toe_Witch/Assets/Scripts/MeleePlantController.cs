@@ -157,4 +157,11 @@ public class MeleePlantController : FloraController {
 		healthBar.transform.parent.gameObject.SetActive (true);
 		daysRemainingBar.SetActive (true);
 	}
+
+	/* OnDayEnd
+	 * Clears out list of things we can hit (they may have been vanished)
+	 */
+	public void OnDayEnd(){
+		inRange.Clear ();
+	}
 } 
