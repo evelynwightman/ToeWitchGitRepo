@@ -16,7 +16,7 @@ public class TramplerController : MovingObject {
 	public float herpTime; //how long to spend herping
 	public float herpWait; //time to wait between looking in a different direction
 	public float nurseryWaitTime; //how long we'll stay out of the nursery
-	[HideInInspector]
+	//[HideInInspector]
 	public bool leaving = false; //are we leaving the yard?
 
 	private float herpCount; //tracks where we are in herping sequence (0 means not herping)
