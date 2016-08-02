@@ -78,8 +78,6 @@ public class InventoryController : MonoBehaviour {
 	public int maxSlotCapacity;
 
 	private List<Slot> slots; //list of Slot objects which can be filled with items
-	private Dictionary<GameObject, Vector3> movingItems; //items currently moving <item, 
-	private List<GameObject> deathRow = new List<GameObject>();
 
 	void Start(){
 		//size inventory GameObject to the number of slots we have
@@ -108,27 +106,6 @@ public class InventoryController : MonoBehaviour {
 
 			slots.Add(slot);
 		}
-
-		//init
-		movingItems = new Dictionary<GameObject, Vector3>();
-	}
-
-	void Update(){
-		//for each item which is moving
-		foreach (KeyValuePair<GameObject,Vector3> entry in movingItems) {
-			//if the item has reached its destination, remove it from movingItems
-			if (Mathf.Approximately (entry.Key.transform.position.magnitude, entry.Value.magnitude)) {
-				deathRow.Add(entry.Key);
-			}
-
-			//move the item toward its destination
-			entry.Key.transform.position = Vector3.MoveTowards (entry.Key.transform.position, entry.Value, speed*Time.deltaTime);
-		}
-
-		//remove items marked for death (messes things up if you do it inside the foreach)
-		foreach (GameObject item in deathRow) {
-			movingItems.Remove (item);
-		}
 	}
 
 	/* Add
@@ -141,7 +118,7 @@ public class InventoryController : MonoBehaviour {
 				//add this thing to that slot
 				slot.Add (item);
 				//set the item to zoom into place in that slot
-				movingItems.Add(item, slot.position);
+				StartCoroutine(MoveIntoInventory(item, slot.position));
 				return;
 			}
 		}
@@ -150,11 +127,19 @@ public class InventoryController : MonoBehaviour {
 		foreach (Slot slot in slots) {
 			if (slot.itemType == null) {
 				slot.Add (item);
-				movingItems.Add(item, slot.position);
+				StartCoroutine(MoveIntoInventory(item, slot.position));
 				return;
 			}
 		}
 		//if there's no empty slot nothing happens
+	}
+
+	IEnumerator MoveIntoInventory(GameObject item, Vector3 destination){
+		//move toward destination
+		while(!Mathf.Approximately (item.transform.position.magnitude, destination.magnitude)){
+			item.transform.position = Vector3.MoveTowards (item.transform.position, destination, speed*Time.deltaTime);
+			yield return null;
+		}
 	}
 
 	/* Remove

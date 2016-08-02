@@ -12,6 +12,8 @@ public class PickupController : MonoBehaviour {
 	protected GameObject shadow;
 	protected BoardManager boardManager;
 
+	private GameObject canvas = null;
+
 	void Start(){
 		shadow = transform.FindChild("Shadow").gameObject;
 		SpriteRenderer shadowRenderer = shadow.GetComponent<SpriteRenderer> ();
@@ -20,6 +22,9 @@ public class PickupController : MonoBehaviour {
 		shadowRenderer.enabled = false;
 		shadowRenderer.color = new Color (1f, 1f, 1f, .5f);
 		pickable = true;
+		if (transform.FindChild ("PlantCanvas") != null) {
+			canvas = transform.FindChild ("PlantCanvas").gameObject;
+		}
 	}
 
 	void Update(){
@@ -27,6 +32,11 @@ public class PickupController : MonoBehaviour {
 		if (transform.hasChanged) {
 			GetComponent<SpriteRenderer> ().sortingOrder = Mathf.RoundToInt (transform.position.y * 100f) * -1;
 			transform.hasChanged = false;
+
+			//including the canvas if we have one
+			if (canvas != null){
+				canvas.GetComponent<Canvas> ().sortingOrder = Mathf.RoundToInt (transform.position.y * 100f) * -1;
+			}
 		}
 	}
 
@@ -57,14 +67,17 @@ public class PickupController : MonoBehaviour {
 
 			//otherwise we can go in the yard but not on the porch
 			if (boardManager.IsInYard (location) && !boardManager.IsOnPorch (location))
-				Debug.Log ("return true");
 				return true;
 		} 
 		//If we are a toe
 		else if (transform.tag == "Toe") {
 			//We can go on top of a plant
 			if (GetComponentInChildren<ObjectCombiner> ().FindPlant (transform.FindChild("Shadow").position) != null) {
-				return true;
+				//but it can't be a seed
+				if (!GetComponentInChildren<ObjectCombiner> ().FindPlant (transform.FindChild ("Shadow").position).
+					GetComponent<FloraController> ().isSeed) {
+					return true;
+				}
 			}
 		}
 		return false;
@@ -100,7 +113,6 @@ public class PickupController : MonoBehaviour {
 	 * Makes us get bigger and then smaller again. A bit of visual bounce for emphasis.
 	 */
 	public IEnumerator Bounce(){
-		Debug.Log ("bounce");
 		Vector3 size = transform.localScale;
 		float increase = 1.25f; //ugh, hard-coded numbers?
 		float bounceSpeed = 2f;

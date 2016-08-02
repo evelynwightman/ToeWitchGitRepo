@@ -34,7 +34,6 @@ public class MovingObject : MonoBehaviour {
 	protected AudioSource audioSource;
 	protected GameObject trackTarget;
 	protected SpriteRenderer spriteRenderer;
-	protected GameObject canvas = null;
 
 	private Vector3 pointer;
 
@@ -45,9 +44,7 @@ public class MovingObject : MonoBehaviour {
 		animator = GetComponent<Animator> ();
 		audioSource = GetComponent<AudioSource> ();
 		spriteRenderer = GetComponent<SpriteRenderer> ();
-		if (transform.FindChild ("PlantCanvas") != null) {
-			canvas = transform.FindChild ("PlantCanvas").gameObject;
-		}
+
 		//set baselines
 		endPoint = transform.position;
 		hitCountdown = hitRecharge;
@@ -57,10 +54,6 @@ public class MovingObject : MonoBehaviour {
 		//keep all sprites overlapping according to y position
 		spriteRenderer.sortingOrder = Mathf.RoundToInt(transform.position.y * 100f) * -1;
 
-		//including the canvas if we have one
-		if (canvas != null){
-			canvas.GetComponent<Canvas> ().sortingOrder = Mathf.RoundToInt (transform.position.y * 100f) * -1;
-		}
 	}
 
 	/* MoveInYard

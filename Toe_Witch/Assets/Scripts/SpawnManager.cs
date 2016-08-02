@@ -29,8 +29,13 @@ public class SpawnManager : MonoBehaviour {
 
 	/* SpawnTrampler
 	 * If there's a trampler waiting to go, reset it and send it out. If not, make a new one. 
+	 * TWO OVERLOADS. Option to take in a float = the prob this trampler will drop a toe. If no value is given,
+	 * the prob will remain at default.
 	 */
 	public GameObject SpawnTrampler(){
+		return SpawnTrampler (-1f);
+	}
+	public GameObject SpawnTrampler(float chanceToDropToe){
 		GameObject trampler;
 		if (waitingTramplers.Count == 0) {
 			//instantiate a new trampler
@@ -46,6 +51,12 @@ public class SpawnManager : MonoBehaviour {
 			trampler.GetComponent<TramplerController>().Restart();
 
 		}
+
+		//if the caller specified the chance of dropping a toe, set it
+		if (chanceToDropToe >= 0){
+			trampler.GetComponent<TramplerController> ().chanceToDrop = chanceToDropToe;
+			}
+
 		return trampler;
 	}
 

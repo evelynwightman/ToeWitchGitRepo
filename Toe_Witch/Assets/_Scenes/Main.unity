@@ -217,7 +217,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0.42214286}
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.1}
+  m_Size: {x: 0.2, y: 0.2}
 --- !u!114 &82669638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1493,7 +1493,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0.42214286}
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.1}
+  m_Size: {x: 0.2, y: 0.2}
 --- !u!114 &690008938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1617,7 +1617,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: -0.012781978, y: 0.42214298}
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.1}
+  m_Size: {x: 0.2, y: 0.2}
 --- !u!114 &790152386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1697,7 +1697,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0.42214286}
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.1}
+  m_Size: {x: 0.2, y: 0.2}
 --- !u!114 &804748116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1731,7 +1731,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0.42214286}
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.1}
+  m_Size: {x: 0.2, y: 0.2}
 --- !u!114 &902246396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1871,7 +1871,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0.42214286}
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.1}
+  m_Size: {x: 0.2, y: 0.2}
 --- !u!114 &1141357585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1895,6 +1895,7 @@ GameObject:
   - 114: {fileID: 1154567005}
   - 82: {fileID: 1154567007}
   - 114: {fileID: 1154567008}
+  - 114: {fileID: 1154567009}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1913,7 +1914,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 154ec67b4c8c50946b0f9481525edeaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStartDelay: 2
+  levelStartDelay: 1
   VillagerSpawnPoint: {fileID: 1106973606}
   tramplerCount: 1
   spawnWait: 3
@@ -2021,6 +2022,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 357554147}
+--- !u!114 &1154567009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1154567004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a033f608c0f4c649b0d545b3cdaa259, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textFile: {fileID: 4900000, guid: 1a7243883c4d9af459dc89f4c149c658, type: 3}
 --- !u!1 &1184928936 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 115918, guid: 07d2aada589458646a0e8600c5202893, type: 2}
@@ -2038,7 +2051,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0.42214286}
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.1}
+  m_Size: {x: 0.2, y: 0.2}
 --- !u!114 &1184928938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2298,7 +2311,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0.42214286}
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.1}
+  m_Size: {x: 0.2, y: 0.2}
 --- !u!114 &1449738838
 MonoBehaviour:
   m_ObjectHideFlags: 0

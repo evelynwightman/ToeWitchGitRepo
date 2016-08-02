@@ -20,12 +20,12 @@ public class ObjectCombiner : MonoBehaviour {
 
 		//Find out what they are
 		string they = plant.name;
-		string[] theySplit = they.Split (' ');
+		string[] theySplit = they.Split (new char[] {' ','('});
 		they = theySplit [0];
 
 		//Find out what we are
 		string me = transform.parent.name;
-		string[] meSplit = me.Split (' ');
+		string[] meSplit = me.Split (new char[] {' ','('});
 		me = meSplit [0];
 
 		//By our powers combined, we are...???
@@ -71,7 +71,7 @@ public class ObjectCombiner : MonoBehaviour {
 
 		//If any of them are a plant, return the plant
 		foreach (UnityEngine.RaycastHit2D item in hits){
-			if (item.transform.tag == "Plant" || item.transform.tag == "FightingPlant") {
+			if (item.transform.tag == "Plant") {
 				return item.transform.gameObject;
 			}
 		}
