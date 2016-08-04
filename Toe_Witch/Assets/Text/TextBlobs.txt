@@ -7,3 +7,14 @@ plantStatTutorial Great. Now, plants that have been magicked together aren't too
 gameOver Game Over
 pickupTutorial Move the Toe Witch around by clicking where you want her to go. When she runs into something that can be picked up, it will be automatically added to your inventory. Go pick up those seeds now.
 toeDropTutorial Would you look at that. He was so scared he dropped his toe! I'm sure we can find a use for it.
+fungusWitchGreeting Hello, dearie. You look stressed!
+toeWitchGreetingYes It's good to see you too.
+toeWitchGreetingNo I've had too many visitors today! I'm not in the mood for company.
+fungusWitchLeave Alright. Take care, dear.
+fungusWitchOfferTrade I found this * and thought of you. I'll trade it to you for one of your #.
+toeWitchTradeYes Deal.
+toeWitchTradeNo I don't think so.
+toeWitchTradeAnother Hm. Can I offer you something else?
+fungusWitchExecuteTrade Thank you! I've always admired your work. Well, I must be off. Night is the best time for gathering.
+fungusWitchRefuseTrade Oh well. I'll see if I can turn up something else to tempt you. See you later! 
+toeWitchClose Goodbye.
