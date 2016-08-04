@@ -32,9 +32,9 @@ public class MeleePlantController : FloraController {
 		//Align daysRemainingBar
 		Vector3 position = daysRemainingBar.transform.GetComponent<RectTransform>().localPosition;
 		daysRemainingBar.transform.GetComponent<RectTransform>().localPosition = new Vector3(
-			position.x + .5f - (lifeSpan/2f)*.1f, position.y,	position.z);
+			position.x + .5f - (adultLifeSpan/2f)*.1f, position.y,	position.z);
 		//Fill daysRemainingBar
-		daysRemainingBar.transform.GetComponent<Image>().fillAmount = lifeSpan*.1f;
+		daysRemainingBar.transform.GetComponent<Image>().fillAmount = adultLifeSpan*.1f;
 
 		//hide status bars until planted
 		if (!planted) {
@@ -137,7 +137,7 @@ public class MeleePlantController : FloraController {
 	 */
 	public override void Age ()
 	{
-		//unless we're planted
+		//don't age unless we're planted
 		if(!planted){
 			return;
 		}
@@ -145,6 +145,10 @@ public class MeleePlantController : FloraController {
 		base.Age ();
 		//decrement daysRemainingBar
 		daysRemainingBar.GetComponent<Image> ().fillAmount = daysRemainingBar.GetComponent<Image> ().fillAmount - .1f;
+		//check whether it's time to die
+		if (age >= adultLifeSpan) {
+			Die ();
+		}
 	}
 
 	/* Plant

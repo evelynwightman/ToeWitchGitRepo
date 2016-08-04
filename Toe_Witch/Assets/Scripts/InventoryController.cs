@@ -180,4 +180,17 @@ public class InventoryController : MonoBehaviour {
 			}
 		}
 	}
+
+	/*Contains
+	 * returns an int representing the number of objects of type tag are in the inventory right now
+	 */
+	public int Contains(string tag){
+		int counter = 0;
+		foreach (Slot slot in slots) {
+			if (slot.itemType == tag){
+				counter = counter + slot.contents.Count;
+			}
+		}
+		return counter;
+	}
 }
