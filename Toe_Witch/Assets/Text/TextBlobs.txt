@@ -5,3 +5,4 @@ combineTomatoesTutorial So many visitors! I know just the thing to scare them of
 createdTomatoeTutorial Perfect! You've created a tomatoe plant! Drag it anywhere on the yard to plant it.
 plantStatTutorial Great. Now, plants that have been magicked together aren't too stable, so it'll only last a few days. The yellow dots show how many days it has left. Watch out for its health too. Ain't no plant that likes to be trampled. (Grumble)
 gameOver Game Over
+pickupTutorial Move the Toe Witch around by clicking where you want her to go. When she runs into something that can be picked up, it will be automatically added to your inventory. Go pick up those seeds now.

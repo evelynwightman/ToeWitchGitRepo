@@ -52,7 +52,7 @@ public class MovingObject : MonoBehaviour {
 
 	protected virtual void Update(){
 		//keep all sprites overlapping according to y position
-		spriteRenderer.sortingOrder = Mathf.RoundToInt(transform.position.y * 100f) * -1;
+		spriteRenderer.sortingOrder = Mathf.RoundToInt((transform.position.y-.5f) * 100f) * -1;
 
 	}
 

@@ -8,6 +8,7 @@ using System.Collections;
 public class PickupController : MonoBehaviour {
 	public bool inInventory = false;
 	public bool pickable;
+	public GameObject pot = null;
 
 	protected GameObject shadow;
 	protected BoardManager boardManager;
@@ -28,14 +29,20 @@ public class PickupController : MonoBehaviour {
 	}
 
 	void Update(){
+
 		//If position has changed, update sorting order accordingly.
 		if (transform.hasChanged) {
-			GetComponent<SpriteRenderer> ().sortingOrder = Mathf.RoundToInt (transform.position.y * 100f) * -1;
+			//if we're in a pot we should be in the same sorting layer as it.
+			if (pot != null) {
+				GetComponent<SpriteRenderer> ().sortingOrder = pot.GetComponent<SpriteRenderer> ().sortingOrder + 1;
+			}
+			//update sorting order
+			else GetComponent<SpriteRenderer> ().sortingOrder = Mathf.RoundToInt ((transform.position.y-.5f) * 100f) * -1;
 			transform.hasChanged = false;
 
 			//including the canvas if we have one
 			if (canvas != null){
-				canvas.GetComponent<Canvas> ().sortingOrder = Mathf.RoundToInt (transform.position.y * 100f) * -1;
+				canvas.GetComponent<Canvas> ().sortingOrder = Mathf.RoundToInt ((transform.position.y-.5f) * 100f) * -1;
 			}
 		}
 	}
@@ -57,17 +64,20 @@ public class PickupController : MonoBehaviour {
 	public bool ICanGoHere(Vector3 location){
 		//If we are a plant
 		if (transform.tag == "FightingPlant" || transform.tag == "Plant") {
-			//if we are a seed we must go in a pot in the nursery
+			//if we are a regular plant we must go in a pot in the nursery
 			if (transform.tag == "Plant") {
-				if(GetComponent<FloraController>().isSeed && boardManager.IsInNursery(location) &&
-					!boardManager.IsOnPorch(location) && PotHere(location))
+				if(boardManager.IsInNursery(location) && !boardManager.IsOnPorch(location) && PotHere(location))
 					return true;
 				return false;
-			}
+			} 
 
-			//otherwise we can go in the yard but not on the porch
-			if (boardManager.IsInYard (location) && !boardManager.IsOnPorch (location))
+			//if we are a fighting plant we must go on the lawn
+			if (transform.tag == "FightingPlant" && boardManager.IsInYard (location) && !boardManager.IsInNursery (location))
 				return true;
+			else {
+				return false;
+			}
+				
 		} 
 		//If we are a toe
 		else if (transform.tag == "Toe") {
