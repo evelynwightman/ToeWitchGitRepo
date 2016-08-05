@@ -29,6 +29,7 @@ public class Slot{
 		contents.Add (item);
 		//update tag to match this item
 		itemType = item.tag;
+
 		//tell the item it's in the inventory
 		item.GetComponent<PickupController> ().inInventory = true;
 
@@ -44,7 +45,8 @@ public class Slot{
 	 */
 	public void Remove(GameObject item){
 		//remove item from contents
-		contents.Remove (item);
+		if (!contents.Remove (item))
+			Debug.LogWarning ("You tried to remove " + item + " from inventory, but it was not in that slot");
 		//tell the item its no longer in the inventory
 		item.GetComponent<PickupController> ().inInventory = false;
 
@@ -61,6 +63,7 @@ public class Slot{
 			counter.SetActive (false);
 		}
 	}
+
 }
 
 
@@ -112,9 +115,17 @@ public class InventoryController : MonoBehaviour {
 	 * Adds given item to inventory
 	 */
 	public void Add(GameObject item){
+		Debug.Log ("add " + item + " of type " + item.tag);
 		foreach (Slot slot in slots) {
 			//if there's a slot holding this kind of thing already and it's not full
 			if (slot.itemType == item.tag && slot.contents.Count < maxSlotCapacity){
+				//if it has this item already something's gone wonky
+				if (slot.contents.Contains(item)){
+					Debug.LogWarning("You tried to add " + item + " to inventory twice.");
+					return;
+				}
+				//tell item it's no longer pickable
+				item.GetComponent<PickupController> ().pickable = false;
 				//add this thing to that slot
 				slot.Add (item);
 				//set the item to zoom into place in that slot
@@ -126,6 +137,8 @@ public class InventoryController : MonoBehaviour {
 		//otherwise, add the item to the first empty slot
 		foreach (Slot slot in slots) {
 			if (slot.itemType == null) {
+				//tell item it's no longer pickable
+				item.GetComponent<PickupController> ().pickable = false;
 				slot.Add (item);
 				StartCoroutine(MoveIntoInventory(item, slot.position));
 				return;
@@ -146,6 +159,7 @@ public class InventoryController : MonoBehaviour {
 	 * Removes given item from inventory
 	 */
 	public void Remove(GameObject item){
+		Debug.Log ("Remove " + item);
 		//check each slot for the item and remove it
 		foreach (Slot slot in slots) {
 			if (slot.itemType == item.tag) {
@@ -155,6 +169,12 @@ public class InventoryController : MonoBehaviour {
 				return;
 			}
 		}
+	}
+
+
+	public void RemoveAndDestroy(GameObject item){
+		Remove (item);
+		GameObject.Destroy (item);
 	}
 
 	/* ReShuffle
@@ -171,8 +191,8 @@ public class InventoryController : MonoBehaviour {
 					if (slots [j].itemType != null) {
 						//move all the stuff into the empty slot
 						foreach (GameObject item in slots[j].contents) {
-							slots [j].Remove (item);
-							slots [i].Add (item);
+							Remove(item);
+							Add(item);
 							break;
 						}
 					}
@@ -192,5 +212,27 @@ public class InventoryController : MonoBehaviour {
 			}
 		}
 		return counter;
+	}
+
+	/*GetRandom
+	 * returns a random item from inventory
+	 */
+	public GameObject GetRandom (){
+		//see how many slots have stuff in them
+		int slotsWithStuff = 0;
+		foreach (Slot slot in slots) {
+			if (slot.contents.Count > 0) {
+				slotsWithStuff++;
+			}
+			else break;
+		}
+
+		//return null if inventory is empty
+		if (slotsWithStuff == 0)
+			return null;
+
+		//return a random item from a random slot with stuff in it.
+		Slot thisSlot = slots [Random.Range (0, slotsWithStuff)];
+		return thisSlot.contents [Random.Range (0, thisSlot.contents.Count)];
 	}
 }

@@ -20,6 +20,16 @@ public class ClickHandler : MonoBehaviour {
 		player = GameObject.Find ("Player").GetComponent<PlayerController>();
 	}
 
+	public void ChillOut(){
+		//cancel whatever item movement we had going on
+		if (player.itemToPutDown != null) {
+			player.itemToPutDown.GetComponent<PickupController>().returnShadow();
+			player.itemToPutDown.transform.GetComponent<SpriteRenderer> ().color = new Color (1f, 1f, 1f, 1f);
+			player.itemToPutDown = null;
+			player.haveLocationToPutDown = false;
+		}
+	}
+
 	void Update(){
 		//handle mouse input
 		if (Input.GetMouseButtonDown(0))
@@ -37,7 +47,8 @@ public class ClickHandler : MonoBehaviour {
 			//if we clicked on a clickable thing
 			if (mouseTarget != null) {
 				//if this is an item to pick up from the inventory
-				if (mouseTarget.GetComponent<PickupController>() != null && mouseTarget.GetComponent<PickupController>().inInventory == true) {
+				if (mouseTarget.GetComponent<PickupController>() != null && 
+						mouseTarget.GetComponent<PickupController>().inInventory == true) {
 					isMouseDrag = true;
 					//flag this to be put down once player gets to where they're putting it
 					player.itemToPutDown = mouseTarget;

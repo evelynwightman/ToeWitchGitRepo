@@ -55,6 +55,7 @@
      <Compile Include="Assets\Scripts\MeleePlantController.cs" />
      <Compile Include="Assets\Scripts\MovingObject.cs" />
      <Compile Include="Assets\Scripts\ObjectCombiner.cs" />
+     <Compile Include="Assets\Scripts\OtherWitch.cs" />
      <Compile Include="Assets\Scripts\PickupController.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\PotController.cs" />

@@ -151,6 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inInventory: 0
   pickable: 1
+  pot: {fileID: 0}
 --- !u!114 &11485614
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -164,7 +165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 10
   isSeed: 1
-  lifeSpan: 2
+  adultLifeSpan: 0
   growUpTime: 1
   seed: {fileID: 21300000, guid: b254a362931e6d544b1b505924bc5b39, type: 3}
   sprout: {fileID: 21300000, guid: 51c1de3b6f1055946b22b731989a411b, type: 3}

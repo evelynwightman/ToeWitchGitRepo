@@ -11,10 +11,13 @@ fungusWitchGreeting Hello, dearie. You look stressed!
 toeWitchGreetingYes It's good to see you too.
 toeWitchGreetingNo I've had too many visitors today! I'm not in the mood for company.
 fungusWitchLeave Alright. Take care, dear.
-fungusWitchOfferTrade I found this * and thought of you. I'll trade it to you for one of your #.
+fungusWitchOfferTrade I found this * and thought of you. I'll trade it to you for that # of yours.
 toeWitchTradeYes Deal.
 toeWitchTradeNo I don't think so.
 toeWitchTradeAnother Hm. Can I offer you something else?
 fungusWitchExecuteTrade Thank you! I've always admired your work. Well, I must be off. Night is the best time for gathering.
 fungusWitchRefuseTrade Oh well. I'll see if I can turn up something else to tempt you. See you later! 
 toeWitchClose Goodbye.
+fungusWitchOfferGift I have this *, but I think you need it more than I do.
+toeWitchGiftYes Thank you.
+fungusWitchExecuteGift Oh, well.... We witches have to look out for each other, you know. See you soon!

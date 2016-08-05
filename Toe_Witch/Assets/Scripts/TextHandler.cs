@@ -49,7 +49,7 @@ public class TextHandler : MonoBehaviour {
 		if (value != null) {
 			return value;
 		} else
-			Debug.LogError ("No text found with given key");
+			Debug.LogError ("No text found with key " + key);
 		return "";
 	}
 }

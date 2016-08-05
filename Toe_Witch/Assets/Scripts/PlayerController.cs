@@ -28,6 +28,7 @@ public class PlayerController : MovingObject
 		//if we're tracking something, set it as our destination
 		if (trackTarget != null) {
 			endPoint = trackTarget.transform.position;
+
 		}
 
 		//Move toward current destination
