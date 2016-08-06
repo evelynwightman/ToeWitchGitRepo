@@ -1,6 +1,6 @@
 day Day 
 menuClose Close
-menuOpen Open
+menuOpen Menu
 plantSeedTutorial Time to garden! Drag seeds from your inventory to a pot in the nursery to plant them.
 hittingTutorial Looks like someone from the village come to visit. I hate visitors! They always trample up my grass. Click on him to chase him away.
 combineTomatoesTutorial I get too many visitors! I know just the thing to scare them off. Drag one of those toes onto one of my tomato plants.
@@ -10,7 +10,7 @@ gameOver Game Over
 pickupTutorial Move the Toe Witch around by clicking where you want her to go. When she runs into something that can be picked up, it will be automatically added to your inventory. Go pick up those seeds now.
 toeDropTutorial Would you look at that. He was so scared he dropped his toe! I'm sure we can find a use for it.
 fungusWitchGreeting Hello, dearie. You look stressed!
-toeWitchGreetingYes It's good to see you too.
+toeWitchGreetingYes Hm. It's good to see you too.
 toeWitchGreetingNo I've had too many visitors today! I'm not in the mood for company.
 fungusWitchLeave Alright. Take care, dear.
 fungusWitchOfferTrade I found this * and thought of you. I'll trade it to you for that # of yours.
@@ -23,3 +23,6 @@ toeWitchClose Goodbye.
 fungusWitchOfferGift I have this *, but I think you need it more than I do.
 toeWitchGiftYes Thank you.
 fungusWitchExecuteGift Oh, well.... We witches have to look out for each other, you know. See you soon!
+quitQuery Are you sure you want to quit?
+yes Yes
+no No
