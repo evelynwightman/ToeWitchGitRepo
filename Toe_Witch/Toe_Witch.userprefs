@@ -1,17 +1,21 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\MeleePlantController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GameManager.cs">
     <Files>
-      <File FileName="Assets\Scripts\MeleePlantController.cs" Line="78" Column="16" />
-      <File FileName="Assets\Scripts\FloraController.cs" Line="15" Column="30" />
-      <File FileName="Assets\Scripts\InventoryController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GameManager.cs" Line="112" Column="1" />
-      <File FileName="Assets\Scripts\TramplerController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PlayerController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PickupController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ClickHandler.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\DialogueDisplayer.cs" Line="15" Column="27" />
+      <File FileName="Assets\Scripts\GameManager.cs" Line="294" Column="35" />
+      <File FileName="Assets\Scripts\MeleePlantController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PickupController.cs" Line="43" Column="41" />
+      <File FileName="Assets\Scripts\TextHandler.cs" Line="49" Column="23" />
+      <File FileName="Assets\Scripts\TramplerController.cs" Line="13" Column="2" />
+      <File FileName="Assets\Scripts\InventoryController.cs" Line="38" Column="5" />
+      <File FileName="Assets\Scripts\SpawnManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PlayerController.cs" Line="64" Column="2" />
       <File FileName="Assets\Scripts\ObjectCombiner.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\SpawnManager.cs" Line="39" Column="19" />
+      <File FileName="Assets\Scripts\FloraController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\MovingObject.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PotController.cs" Line="20" Column="50" />
+      <File FileName="Assets\Scripts\OtherWitch.cs" Line="10" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
