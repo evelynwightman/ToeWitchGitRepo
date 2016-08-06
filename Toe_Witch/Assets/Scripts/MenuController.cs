@@ -36,6 +36,7 @@ public class MenuController : MonoBehaviour {
 
 	IEnumerator SlideOnMenu(){
 		while (!Mathf.Approximately (transform.position.magnitude, onPosition.magnitude)) {
+			Time.timeScale = 1.0f; //un-pause if soemthing else has paused;
 			transform.position = Vector3.MoveTowards (transform.position, onPosition, speed * Time.deltaTime);
 			yield return null;
 		}

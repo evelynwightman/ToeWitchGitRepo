@@ -3884,8 +3884,8 @@ MonoBehaviour:
   spawnWait: 3
   startWait: 0
   waveWait: 10
-  dayDuration: 10
-  tutorialOn: 0
+  dayDuration: 30
+  tutorialOn: 1
   dialogueDisplay: {fileID: 1070131870}
   fungusWitch: {fileID: 31151564}
 --- !u!4 &1154567006
