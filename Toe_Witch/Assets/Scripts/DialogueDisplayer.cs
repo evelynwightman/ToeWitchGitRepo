@@ -106,8 +106,10 @@ public class DialogueDisplayer : MonoBehaviour {
 	}
 
 	void ExecuteTrade(){
-		inventory.Add (Instantiate (tradeOffer));
+		GameObject trade = Instantiate (tradeOffer);
 		inventory.RemoveAndDestroy (tradeSuggestion);
+		inventory.Add (trade);
+
 
 		SetUpText (textBlob.Get("fungusWitchExecuteTrade"), textBlob.Get("toeWitchClose"));
 		Choice (new UnityAction (Close));

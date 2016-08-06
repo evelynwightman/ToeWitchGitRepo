@@ -115,7 +115,6 @@ public class InventoryController : MonoBehaviour {
 	 * Adds given item to inventory
 	 */
 	public void Add(GameObject item){
-		Debug.Log ("add " + item + " of type " + item.tag);
 		foreach (Slot slot in slots) {
 			//if there's a slot holding this kind of thing already and it's not full
 			if (slot.itemType == item.tag && slot.contents.Count < maxSlotCapacity){
@@ -124,6 +123,7 @@ public class InventoryController : MonoBehaviour {
 					Debug.LogWarning("You tried to add " + item + " to inventory twice.");
 					return;
 				}
+				Debug.Log ("Put in with stuff");
 				//tell item it's no longer pickable
 				item.GetComponent<PickupController> ().pickable = false;
 				//add this thing to that slot
@@ -139,27 +139,30 @@ public class InventoryController : MonoBehaviour {
 			if (slot.itemType == null) {
 				//tell item it's no longer pickable
 				item.GetComponent<PickupController> ().pickable = false;
+				Debug.Log ("Put in empty slot");
 				slot.Add (item);
 				StartCoroutine(MoveIntoInventory(item, slot.position));
 				return;
 			}
 		}
+
 		//if there's no empty slot nothing happens
 	}
 
 	IEnumerator MoveIntoInventory(GameObject item, Vector3 destination){
 		//move toward destination
-		while(!Mathf.Approximately (item.transform.position.magnitude, destination.magnitude)){
+		while(!Mathf.Approximately (item.transform.position.y, destination.y)){
 			item.transform.position = Vector3.MoveTowards (item.transform.position, destination, speed*Time.deltaTime);
 			yield return null;
 		}
+		item.transform.position = destination;
+		Debug.Log ("Item in place at " + destination);
 	}
 
 	/* Remove
 	 * Removes given item from inventory
 	 */
 	public void Remove(GameObject item){
-		Debug.Log ("Remove " + item);
 		//check each slot for the item and remove it
 		foreach (Slot slot in slots) {
 			if (slot.itemType == item.tag) {
