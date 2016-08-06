@@ -71,8 +71,8 @@ public class MovingObject : MonoBehaviour {
 
 		//make sure we stay in the yard
 		transform.position = new Vector3 (
-			Mathf.Clamp (transform.position.x, boardManager.yardWest + .5f, boardManager.yardEast - .5f),
-			Mathf.Clamp (transform.position.y, boardManager.yardSouth + .5f, boardManager.yardNorth - .5f),
+			Mathf.Clamp (transform.position.x, boardManager.yardWest, boardManager.yardEast ),
+			Mathf.Clamp (transform.position.y, boardManager.yardSouth, boardManager.yardNorth),
 			0f
 		);
 

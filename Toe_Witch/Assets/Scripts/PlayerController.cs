@@ -25,10 +25,19 @@ public class PlayerController : MovingObject
 		}
 		hitCountdown = hitCountdown - 1*Time.deltaTime;
 
-		//if we're tracking something, set it as our destination
+		//check to see if we've pick up a thing we're tracking
 		if (trackTarget != null) {
-			endPoint = trackTarget.transform.position;
+			if (trackTarget.GetComponent<PickupController> () != null) {
+				if (trackTarget.GetComponent<PickupController> ().inInventory == true) {
+					trackTarget = null;
+				}
+			}
+		}
 
+		//if we're still tracking something, set it as our destination
+		if (trackTarget != null) {
+			//if not, set us up to go toward it
+			endPoint = trackTarget.transform.position;
 		}
 
 		//Move toward current destination
