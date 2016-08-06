@@ -14,7 +14,7 @@ public class TextHandler : MonoBehaviour {
 
 	private Dictionary<string, string> textBlobs = new Dictionary<string, string>();
 
-	void Start () {
+	void Awake () {
 		//build the textBlobs dictionary from the text file
 		using (StringReader reader = new StringReader (textFile.text)) {
 			string key;

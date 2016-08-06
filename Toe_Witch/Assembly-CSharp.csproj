@@ -53,6 +53,7 @@
      <Compile Include="Assets\Scripts\GrassController.cs" />
      <Compile Include="Assets\Scripts\InventoryController.cs" />
      <Compile Include="Assets\Scripts\MeleePlantController.cs" />
+     <Compile Include="Assets\Scripts\MenuController.cs" />
      <Compile Include="Assets\Scripts\MovingObject.cs" />
      <Compile Include="Assets\Scripts\ObjectCombiner.cs" />
      <Compile Include="Assets\Scripts\OtherWitch.cs" />

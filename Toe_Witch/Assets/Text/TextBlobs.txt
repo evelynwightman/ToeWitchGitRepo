@@ -1,4 +1,6 @@
 day Day 
+menuClose Close
+menuOpen Open
 plantSeedTutorial Time to garden! Drag seeds from your inventory to a pot in the nursery to plant them.
 hittingTutorial Looks like someone from the village come to visit. I hate visitors! They always trample up my grass. Click on him to chase him away.
 combineTomatoesTutorial I get too many visitors! I know just the thing to scare them off. Drag one of those toes onto one of my tomato plants.
