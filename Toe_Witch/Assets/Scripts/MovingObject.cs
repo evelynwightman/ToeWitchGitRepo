@@ -100,13 +100,13 @@ public class MovingObject : MonoBehaviour {
 		//if target is to the right and we're not already facing right
 		if (target.x > transform.position.x && !facingRight) {
 			//face right
-			transform.Rotate(0, 180, 0);
+			animator.SetBool("facingRight", true);//transform.Rotate(0, 180, 0);
 			facingRight = true;
 		}
 		//if target is to the left and we're facing right
 		else if (target.x < transform.position.x && facingRight) {
 			//face left
-			transform.Rotate(0, -180, 0);
+			animator.SetBool("facingRight", false); //transform.Rotate(0, -180, 0);
 			facingRight = false;
 		}
 	}

@@ -72,7 +72,7 @@ Rigidbody2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 139898}
   m_UseAutoMass: 1
-  m_Mass: 1.1989716
+  m_Mass: 0.23465636
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -220,6 +220,7 @@ MonoBehaviour:
   haveLocationToPutDown: 0
   locationToPutDown: {x: 0, y: 0, z: 0}
   toe: {fileID: 173228, guid: 55e105560dd0b8a43bf880ba3c907e21, type: 2}
+  chanceToDrop: 0
   startingHealth: 10
   tramplage: 1
   herpTime: 5
