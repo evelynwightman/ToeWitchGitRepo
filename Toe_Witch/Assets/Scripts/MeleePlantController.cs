@@ -19,15 +19,14 @@ public class MeleePlantController : FloraController {
 	private Animator animator;
 	private GameObject healthBar;
 	private GameObject daysRemainingBar;
-	private AudioSource audioSource;
 
 	protected override void Start () {
 		base.Start();
 		//Find components
 		animator = GetComponent<Animator> ();
-		audioSource = GetComponent<AudioSource> ();
 		healthBar = transform.FindChild ("PlantCanvas").FindChild ("HealthBackground").FindChild ("Health").gameObject;
 		daysRemainingBar = transform.FindChild ("PlantCanvas").FindChild ("DaysRemaining").gameObject;
+		audioSource = GetComponent<AudioSource> ();
 
 		//Align daysRemainingBar
 		Vector3 position = daysRemainingBar.transform.GetComponent<RectTransform>().localPosition;
@@ -102,6 +101,10 @@ public class MeleePlantController : FloraController {
 		//handle visuals
 		animator.SetTrigger ("hit");
 		//handle sound
+		if (audioSource == null)
+			Debug.Log ("Yes, here!");
+		audioSource.volume = 1f;
+		audioSource.clip = hittingSound;
 		audioSource.Play();
 		//deal damage
 		hitTarget.GetComponent<TramplerController> ().TakeDamage (hitStrength);
@@ -117,7 +120,6 @@ public class MeleePlantController : FloraController {
 		Image healthImage = healthBar.GetComponent<Image>();
 		healthImage.fillAmount = (float)health / (float)startingHealth;
 		//color health bar
-		Debug.Log("healthBar.fillAmount = " + healthImage.fillAmount);
 		if (healthImage.fillAmount <= .3f) {
 			healthImage.color = Color.red;
 		} else if (healthImage.fillAmount <= .5f) {

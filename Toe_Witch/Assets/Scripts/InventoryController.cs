@@ -123,7 +123,6 @@ public class InventoryController : MonoBehaviour {
 					Debug.LogWarning("You tried to add " + item + " to inventory twice.");
 					return;
 				}
-				Debug.Log ("Put in with stuff");
 				//tell item it's no longer pickable
 				item.GetComponent<PickupController> ().pickable = false;
 				//add this thing to that slot
@@ -139,7 +138,6 @@ public class InventoryController : MonoBehaviour {
 			if (slot.itemType == null) {
 				//tell item it's no longer pickable
 				item.GetComponent<PickupController> ().pickable = false;
-				Debug.Log ("Put in empty slot");
 				slot.Add (item);
 				StartCoroutine(MoveIntoInventory(item, slot.position));
 				return;
@@ -156,7 +154,6 @@ public class InventoryController : MonoBehaviour {
 			yield return null;
 		}
 		item.transform.position = destination;
-		Debug.Log ("Item in place at " + destination);
 	}
 
 	/* Remove

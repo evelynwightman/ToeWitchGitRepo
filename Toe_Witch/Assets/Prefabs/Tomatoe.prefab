@@ -295,7 +295,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
   m_Color: {r: 0.089452446, g: 1, b: 0.014705896, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -322,7 +322,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
   m_Color: {r: 0.8897059, g: 0.8897059, b: 0.8897059, a: 0.541}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -417,9 +417,15 @@ MonoBehaviour:
   adultLifeSpan: 2
   growUpTime: 1
   seed: {fileID: 21300062, guid: 8732c811ac3ea664094d2081357e1c52, type: 3}
+  seedMaterial: {fileID: 0}
   sprout: {fileID: 21300042, guid: 8732c811ac3ea664094d2081357e1c52, type: 3}
+  sproutMaterial: {fileID: 0}
   adultPlant: {fileID: 21300000, guid: 38f6897cd97e89d4c8c576f9234fcffc, type: 3}
+  adultPlantMaterial: {fileID: 0}
   planted: 0
+  growUpSound: {fileID: 8300000, guid: 1ad2ab393729f1b40ba2865d30bc488a, type: 3}
+  plantingSound: {fileID: 8300000, guid: d05de52cd54af944aad92dea6285c595, type: 3}
+  hittingSound: {fileID: 8300000, guid: a820713cfbe60964ab635af40cd94f3d, type: 3}
   health: 0
   hitStrength: 1
   hitRecharge: 0.5
@@ -434,7 +440,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
   m_Color: {r: 0.9852941, g: 0.9178424, b: 0.0072448165, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:

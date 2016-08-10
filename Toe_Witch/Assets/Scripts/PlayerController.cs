@@ -9,6 +9,8 @@ using System.Collections;
 public class PlayerController : MovingObject
 {
 	public InventoryController inventory;
+	public AudioClip pickupSound;
+	public AudioClip hitSound;
 
 	protected override void Start()
 	{
@@ -94,6 +96,8 @@ public class PlayerController : MovingObject
 		//deal damage
 		hitTarget.GetComponent<TramplerController> ().TakeDamage (hitStrength);
 		//play audio
+		audioSource.clip = hitSound;
+		audioSource.volume = 1f;
 		audioSource.Play ();
 	}
 
@@ -101,6 +105,9 @@ public class PlayerController : MovingObject
 	 * Adds given item to inventory 
 	 */
 	public void PickUp(GameObject item){
+		audioSource.clip = pickupSound;
+		audioSource.volume = .25f;
+		audioSource.Play ();
 		inventory.Add (item);
 	}
 

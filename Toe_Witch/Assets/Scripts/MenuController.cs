@@ -15,12 +15,12 @@ public class MenuController : MonoBehaviour {
 	private TextHandler textBlobs;
 
 	void Start(){
-		menuPanel.SetActive (false);
-		transform.position = offPosition;
+		menuPanel.SetActive (true);
+		transform.position = onPosition;
 
 		textBlobs = GameObject.Find ("GameManager").GetComponent<TextHandler> ();
 
-		menuToggleButton.transform.GetComponentInChildren<Text> ().text = textBlobs.Get ("menuOpen");
+		menuToggleButton.transform.GetComponentInChildren<Text> ().text = textBlobs.Get ("menuClose");
 	}
 
 	public void ToggleMenu(){

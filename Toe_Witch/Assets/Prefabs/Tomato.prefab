@@ -45,6 +45,7 @@ GameObject:
   - 114: {fileID: 11455914}
   - 114: {fileID: 11485614}
   - 50: {fileID: 5026606}
+  - 82: {fileID: 8222624}
   m_Layer: 2
   m_Name: Tomato
   m_TagString: Plant
@@ -138,6 +139,80 @@ BoxCollider2D:
   m_Offset: {x: -0.045839787, y: -0.36160707}
   serializedVersion: 2
   m_Size: {x: 1.0180846, y: 0.692996}
+--- !u!82 &8222624
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195182}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 1ad2ab393729f1b40ba2865d30bc488a, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &11455914
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -174,6 +249,9 @@ MonoBehaviour:
   adultPlant: {fileID: 21300000, guid: 5e189a908308a1947ab6f4eb3f4222a8, type: 3}
   adultPlantMaterial: {fileID: 2100000, guid: a0d720ddffc205f498f48df66100cd6c, type: 2}
   planted: 0
+  growUpSound: {fileID: 8300000, guid: 1ad2ab393729f1b40ba2865d30bc488a, type: 3}
+  plantingSound: {fileID: 8300000, guid: d05de52cd54af944aad92dea6285c595, type: 3}
+  hittingSound: {fileID: 8300000, guid: a820713cfbe60964ab635af40cd94f3d, type: 3}
   health: 0
 --- !u!212 &21217508
 SpriteRenderer:

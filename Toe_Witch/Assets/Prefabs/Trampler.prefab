@@ -220,7 +220,7 @@ MonoBehaviour:
   haveLocationToPutDown: 0
   locationToPutDown: {x: 0, y: 0, z: 0}
   toe: {fileID: 173228, guid: 55e105560dd0b8a43bf880ba3c907e21, type: 2}
-  chanceToDrop: 0
+  chanceToDrop: 50
   startingHealth: 10
   tramplage: 1
   herpTime: 5
