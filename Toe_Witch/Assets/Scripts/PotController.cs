@@ -32,11 +32,12 @@ public class PotController : MonoBehaviour {
 	}
 
 	/* TakeDamage
-	 * Handles takind damage and updating sprite accordingly.
+	 * Handles taking damage and updating sprite accordingly.
 	 */
 	protected virtual void TakeDamage(float damage){
 		health = health - damage;
 
+		// updating sprites off for now because I don't have damage sprites for the pots.
 		/*
 		if (health <= 0) {
 			spriteRenderer.sprite = dirt;

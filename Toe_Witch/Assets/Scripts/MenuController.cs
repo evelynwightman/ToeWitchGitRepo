@@ -1,3 +1,7 @@
+/* MenuController
+ * Evelyn Wightman 2016
+ * Handles the main menu.
+ */
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
@@ -23,6 +27,9 @@ public class MenuController : MonoBehaviour {
 		menuToggleButton.transform.GetComponentInChildren<Text> ().text = textBlobs.Get ("menuClose");
 	}
 
+	/* ToggleMenu
+	 * if menu is on, turn it off, if it's off, turn it on.
+	 */
 	public void ToggleMenu(){
 		if (transform.position == onPosition) {
 			menuPanel.SetActive (false);
@@ -34,6 +41,9 @@ public class MenuController : MonoBehaviour {
 		}
 	}
 
+	/* SlideOnMenu
+	 * Moves menu into onscreen position
+	 */
 	IEnumerator SlideOnMenu(){
 		while (!Mathf.Approximately (transform.position.magnitude, onPosition.magnitude)) {
 			Time.timeScale = 1.0f; //un-pause if soemthing else has paused;
@@ -46,6 +56,9 @@ public class MenuController : MonoBehaviour {
 		menuToggleButton.transform.GetComponentInChildren<Text> ().text = textBlobs.Get ("menuClose");
 	}
 
+	/* SlideOnMenu
+	 * Moves menu into offscreen position
+	 */
 	IEnumerator SlideOffMenu(){
 		//resume game
 		Time.timeScale = 1.0f;
@@ -57,10 +70,15 @@ public class MenuController : MonoBehaviour {
 		menuToggleButton.transform.GetComponentInChildren<Text> ().text = textBlobs.Get ("menuOpen");
 	}
 
+	/* OfferQuit
+	 * Pops up a 'yes/no' box to make sure the user wants to quit.
+	 */
 	public void OfferQuit(){
 		yesNo.transform.GetComponent<YesNoHandler> ().PoseQuestion (textBlobs.Get ("quitQuery"), new UnityAction (QuitGame));
 	}
 
+	/* QuitGame
+	 */
 	void QuitGame(){
 		Application.Quit();
 	}
