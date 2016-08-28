@@ -19,11 +19,11 @@ public class GrassController : FloraController {
 	protected override void Start () {
 		base.Start();
 	}
-	
+
 	/* TakeDamage
 	 * Handles taking damage and updating the sprite accordingly. Tells Game
 	 */
-	protected override void TakeDamage(float damage) {
+	public override void TakeDamage(float damage) {
 		base.TakeDamage(damage);
 		if (health <= 0) {
 			spriteRenderer.sprite = dirt;
@@ -34,5 +34,22 @@ public class GrassController : FloraController {
 		} else if (health < ruffledHealthBar) {
 			spriteRenderer.sprite = ruffledHealth;
 		} 
+	}
+
+	public override void Plant(){
+		base.Plant ();
+
+		//make us a child of the yard
+		GameObject yard = GameObject.Find("Yard");
+		transform.parent = yard.transform;
+
+		//if there's any grass underneath us, destroy it.
+		foreach (Transform grass in yard.transform) {
+			if (grass != this.transform) {
+				if (transform.position == grass.position) {
+					Destroy (grass.gameObject);
+				}
+			}
+		}
 	}
 }

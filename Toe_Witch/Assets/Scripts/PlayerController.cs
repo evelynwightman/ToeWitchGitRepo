@@ -124,7 +124,8 @@ public class PlayerController : MovingObject
 			//remove from inventory
 			inventory.Remove (itemToPutDown);
 			//if it's a plant, plant it here
-			if (itemToPutDown.tag == "Plant" || itemToPutDown.tag == "FightingPlant") {
+			if (itemToPutDown.tag == "Plant" || itemToPutDown.tag == "FightingPlant" || 
+				itemToPutDown.tag == "Grass") {
 				itemToPutDown.GetComponent<FloraController>().Plant ();
 			}
 			//if it's a toe, see if there's a plant to combine it with

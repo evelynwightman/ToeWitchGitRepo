@@ -16,8 +16,11 @@ public class TramplerController : MovingObject {
 	public float herpTime; //how long to spend herping
 	public float herpWait; //time to wait between looking in a different direction
 	public float nurseryWaitTime; //how long we'll stay out of the nursery
+	public float wreckTime; //how long to spend wrecking
+	public float wreckWait; //how long to wait between damages while wrecking
 	//[HideInInspector]
 	public bool leaving = false; //are we leaving the yard?
+	public bool isChild;
 
 	private float herpCount; //tracks where we are in herping sequence (0 means not herping)
 	private float lifetimeCount; //tracks how long we've been alive
@@ -27,6 +30,7 @@ public class TramplerController : MovingObject {
 	private Vector3 exitPoint;
 	private Vector3 entryPoint;
 	private BoxCollider2D boxCollider;
+	private bool wrecking = false; //are we currently wrecking a square?
 
 	protected override void Start () {
 		boardManager = GameObject.Find ("Board").GetComponent<BoardManager>();
@@ -50,22 +54,29 @@ public class TramplerController : MovingObject {
 	}
 
 	protected override void Update () {
-		lifetimeCount++;
+		lifetimeCount = lifetimeCount + 1*Time.deltaTime;
 
-		//check flags, do things
-		if (leaving){
-			LeaveYard ();
-		}
-		else if (entering) {
-			EnterYard();
-		}
-		else if (moving) {
-			MoveInYard (endPoint);
-		}
-		//if we're not moving or herping
-		if (!moving && herpCount == 0){
-			//herp derp and go to a new random spot
-			StartCoroutine(HerpDerp());
+		//if we're not actively wrecking
+		if (!wrecking) {
+			//check flags, do things
+			if (leaving) {
+				LeaveYard ();
+			} else if (entering) {
+				EnterYard ();
+			} else if (moving) {
+				MoveInYard (endPoint);
+			}
+			//if we're at our endPoint and not already wrecking, wreck this spot
+			if (!moving && !wrecking && herpCount == 0) {
+				StartCoroutine(WreckThisSpot ());
+			}
+			/*
+			//if we're not moving or herping
+			else if (!moving && herpCount == 0) {
+				//herp derp and go to a new random spot
+				StartCoroutine (HerpDerp ());
+			}
+			*/
 		}
 		base.Update ();
 	}
@@ -115,6 +126,7 @@ public class TramplerController : MovingObject {
 	 * Gets a new spot to move to. Simulates indecision. Flips Trampler back and forth for herpTime.
 	 */
 	IEnumerator HerpDerp(){
+		Debug.Log ("Herping");
 		animator.SetBool ("walking", false);
 		while (herpCount < herpTime) {
 			herpSpot = getRandomSpotInYard ();
@@ -128,14 +140,50 @@ public class TramplerController : MovingObject {
 		animator.SetBool ("walking", true);
 	}
 
+	IEnumerator WreckThisSpot(){
+		Debug.Log ("Wrecking");
+		//animator bool set
+		wrecking = true;
+		int wreckCount = 0;
+		GameObject plant;
+		while (wreckCount < wreckTime) {
+			//damage all plants we're touching
+			Collider2D[] plants = Physics2D.OverlapCircleAll(transform.position, GetComponent<BoxCollider2D>().size.x/2);
+			foreach (Collider2D clickable in plants) {
+				plant = clickable.transform.parent.gameObject;
+				if (plant.tag == "Grass") {
+					plant.GetComponent<GrassController> ().TakeDamage (tramplage);
+				} else if (plant.tag == "FightingPlant") {
+					plant.GetComponent<MeleePlantController> ().TakeDamage (tramplage);
+				}
+				//Debug.Log ("Damage");
+			}
+
+			wreckCount ++;
+			yield return new WaitForSeconds (wreckWait);
+		}
+		wrecking = false;
+
+		StartCoroutine (HerpDerp ());
+		//animator bool set
+
+	}
+
 	/* getRandomSpotInYard
 	 * Returns a random position within the bounds of the yard
 	 * Handles nursery wait time and keeps trampler off porch
 	 */
 	Vector3 getRandomSpotInYard(){
-		//get a random spot in the yard
-		Vector3 random = new Vector3(Random.Range(boardManager.yardWest + .5f, boardManager.yardEast - .5f), 
-			Random.Range(boardManager.yardSouth + .5f, boardManager.yardNorth - .5f), 0.0f);
+		//get a random spot in the yard (int spot if child)
+		Vector3 random;
+		if (!isChild){
+			random = new Vector3 (Random.Range (boardManager.yardWest + .5f, boardManager.yardEast - .5f), 
+				Random.Range (boardManager.yardSouth + .5f, boardManager.yardNorth - .5f), 0.0f);
+		}
+		else {
+			random = new Vector3 (Random.Range((int)(boardManager.yardWest + .5f), (int)(boardManager.yardEast + .5f)), 
+				Random.Range ((int)(boardManager.yardSouth + .5f), (int)(boardManager.yardNorth + .5f)), 0);
+		}
 		
 		//if you haven't been around longer than your nurseryWaitTime, don't go into the nursery
 		if (nurseryWaitTime > lifetimeCount * Time.deltaTime && boardManager.IsInNursery(random)) {
@@ -145,6 +193,7 @@ public class TramplerController : MovingObject {
 		if (boardManager.IsOnPorch(random)) {
 			return getRandomSpotInYard ();
 		}
+
 		return random;
 	}
 

@@ -113,7 +113,7 @@ public class MeleePlantController : FloraController {
 	/* TakeDamage
 	 * Calls base damage(). Updates health bar and checks if we're dead.
 	 */
-	protected override void TakeDamage(float damage){
+	public override void TakeDamage(float damage){
 		base.TakeDamage (damage);
 
 		//update health bar

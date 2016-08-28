@@ -15,6 +15,10 @@ public class PickupController : MonoBehaviour {
 
 	private GameObject canvas = null;
 
+	void Awake(){
+		pickable = true;
+	}
+
 	void Start(){
 		shadow = transform.FindChild("Shadow").gameObject;
 		SpriteRenderer shadowRenderer = shadow.GetComponent<SpriteRenderer> ();
@@ -22,7 +26,6 @@ public class PickupController : MonoBehaviour {
 		shadowRenderer.sprite = GetComponent<SpriteRenderer> ().sprite;
 		shadowRenderer.enabled = false;
 		shadowRenderer.color = new Color (1f, 1f, 1f, .5f);
-		pickable = true;
 		if (transform.FindChild ("PlantCanvas") != null) {
 			canvas = transform.FindChild ("PlantCanvas").gameObject;
 		}
@@ -62,6 +65,15 @@ public class PickupController : MonoBehaviour {
 	 * Decides whether we can be put at given location based on our tag. Returns true if we can go there, false if not.
 	 */
 	public bool ICanGoHere(Vector3 location){
+		//If we are grass
+		if (transform.tag == "Grass") {
+			//we must go on the lawn
+			if (boardManager.IsInYard (location) && !boardManager.IsInNursery (location))
+				return true;
+			else {
+				return false;
+			}
+		}
 		//If we are a plant
 		if (transform.tag == "FightingPlant" || transform.tag == "Plant") {
 			//if we are a regular plant we must go in a pot in the nursery
