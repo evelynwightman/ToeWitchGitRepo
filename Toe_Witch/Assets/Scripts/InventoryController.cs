@@ -214,9 +214,23 @@ public class InventoryController : MonoBehaviour {
 		return counter;
 	}
 
+	/* GetFightingPlant
+	 * returns a fighting plant from inventory
+	 */
+	public GameObject GetFightingPlant (){
+		foreach (Slot slot in slots) {
+			if (slot.itemType == "FightingPlant") {
+				return slot.contents [0];
+			}
+		}
+		return null;
+	}
+
+
 	/*GetRandom
 	 * returns a random item from inventory
 	 */
+	/*
 	public GameObject GetRandom (){
 		//see how many slots have stuff in them
 		int slotsWithStuff = 0;
@@ -235,4 +249,5 @@ public class InventoryController : MonoBehaviour {
 		Slot thisSlot = slots [Random.Range (0, slotsWithStuff)];
 		return thisSlot.contents [Random.Range (0, thisSlot.contents.Count)];
 	}
+	*/
 }

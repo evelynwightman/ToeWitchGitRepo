@@ -22,7 +22,7 @@ fungusWitchRefuseTrade Oh well. I'll see if I can turn up something else to temp
 toeWitchClose Goodbye.
 fungusWitchOfferGift I have this *, but I think you need it more than I do.
 toeWitchGiftYes Thank you.
-fungusWitchExecuteGift Oh, well.... We witches have to look out for each other, you know. See you soon!
+fungusWitchExecuteGift Oh, well.... We witches have to look out for each other, you know. Speaking of which, I have some goodies at home I'd love to trade for one of your special plants if you ever have a spare. See you soon!
 quitQuery Are you sure you want to quit?
 yes Yes
 no No

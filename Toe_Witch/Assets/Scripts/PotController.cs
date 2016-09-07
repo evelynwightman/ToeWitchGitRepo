@@ -10,6 +10,7 @@ public class PotController : MonoBehaviour {
 
 	public float startingHealth;
 
+	private GameObject plant;
 	private float health;
 	private SpriteRenderer spriteRenderer;
 
@@ -48,4 +49,17 @@ public class PotController : MonoBehaviour {
 		}
 		*/
 	}
+
+	public void setPlant(GameObject newPlant)
+	{
+		plant = newPlant;
+	}
+
+	public bool hasPlant(){
+		if (plant == null)
+			return false;
+		else
+			return true;
+	}
+		
 }

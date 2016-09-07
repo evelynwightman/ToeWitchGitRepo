@@ -57,7 +57,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 139898}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.112, y: 2.078, z: 0}
+  m_LocalPosition: {x: 5.79, y: 2.31, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -215,7 +215,7 @@ MonoBehaviour:
   speed: 0.6
   runningSpeed: 1
   hitStrength: 0
-  hitRecharge: 0.5
+  hitRecharge: 0
   itemToPutDown: {fileID: 0}
   haveLocationToPutDown: 0
   locationToPutDown: {x: 0, y: 0, z: 0}
@@ -226,7 +226,10 @@ MonoBehaviour:
   herpTime: 5
   herpWait: 0.5
   nurseryWaitTime: 10
+  wreckTime: 0
+  wreckWait: 0
   leaving: 0
+  isChild: 0
 --- !u!212 &21291668
 SpriteRenderer:
   m_ObjectHideFlags: 1

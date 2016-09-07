@@ -38,6 +38,8 @@ public class PickupController : MonoBehaviour {
 			//if we're in a pot we should be in the same sorting layer as it.
 			if (pot != null) {
 				GetComponent<SpriteRenderer> ().sortingOrder = pot.GetComponent<SpriteRenderer> ().sortingOrder + 1;
+				//tell the pot we are in it.
+				pot.GetComponent<PotController>().setPlant(transform.gameObject);
 			}
 			//update sorting order
 			else GetComponent<SpriteRenderer> ().sortingOrder = Mathf.RoundToInt ((transform.position.y-.5f) * 100f) * -1;
@@ -78,13 +80,18 @@ public class PickupController : MonoBehaviour {
 		if (transform.tag == "FightingPlant" || transform.tag == "Plant") {
 			//if we are a regular plant we must go in a pot in the nursery
 			if (transform.tag == "Plant") {
-				if(boardManager.IsInNursery(location) && !boardManager.IsOnPorch(location) && PotHere(location))
-					return true;
+				GameObject perhapsAPot = FindPot (location);
+				if (boardManager.IsInNursery (location) && !boardManager.IsOnPorch (location) && perhapsAPot != null) {
+					//the pot must be empty
+					if (!perhapsAPot.GetComponent<PotController>().hasPlant())
+						return true;
+				}
 				return false;
 			} 
 
 			//if we are a fighting plant we must go on the lawn
-			if (transform.tag == "FightingPlant" && boardManager.IsInYard (location) && !boardManager.IsInNursery (location))
+			if (transform.tag == "FightingPlant" && boardManager.IsInYard (location) 
+				&& !boardManager.IsInNursery (location))
 				return true;
 			else {
 				return false;
@@ -105,22 +112,22 @@ public class PickupController : MonoBehaviour {
 		return false;
 	}
 
-	/* PotHere
+	/* FindPot
 	 * Returns true if there's a pot at current location, false otherwise.
 	 */
-	bool PotHere(Vector3 location){
+	GameObject FindPot(Vector3 location){
 		//Find all the things that are also on this spot
 		RaycastHit2D[] hits;
 		Ray ray = new Ray (Camera.main.transform.position, location - Camera.main.transform.position);
 		hits = Physics2D.RaycastAll (ray.origin, ray.direction);
 
-		//If any of them are a pot, return true
+		//If any of them are a pot, return the pot
 		foreach (UnityEngine.RaycastHit2D item in hits){
 			if (item.transform.tag == "Pot") {
-				return true;
+				return item.transform.gameObject;
 			}
 		}
-		return false;
+		return null;
 	}
 
 	/* ReturnShadow

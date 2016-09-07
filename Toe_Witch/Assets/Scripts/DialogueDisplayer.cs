@@ -86,9 +86,6 @@ public class DialogueDisplayer : MonoBehaviour {
 
 		witch = otherWitch;
 
-		//get a random item to offer up for trade from this witch's stash
-		tradeOffer = witch.tradableItems [Random.Range (0, witch.tradableItems.Count)];
-
 		//set up greeting and hand it over to the user to chose the next step.
 		SetUpText(textBlob.Get("fungusWitchGreeting"), textBlob.Get("toeWitchGreetingYes"), 
 			textBlob.Get("toeWitchGreetingNo"));
@@ -100,13 +97,16 @@ public class DialogueDisplayer : MonoBehaviour {
 	void OfferTrade(){
 		string tradeOfferText = textBlob.Get ("fungusWitchOfferTrade");
 
-		//get a random item to suggest for trade from ToeWitch's inventory
-		tradeSuggestion = inventory.GetRandom ();
-		//if ToeWitch's inventory is empty, offer the item as a gift instead
+		//get a random fightingPlant to suggest for trade from ToeWitch's inventory
+		tradeSuggestion = inventory.GetFightingPlant ();
+		//if ToeWitch doesn't have any fightingPlants to trade, offer a gift instead
 		if (tradeSuggestion == null) {
 			OfferGift ();
 			return;
 		}
+
+		//get a random item to offer up for trade from this witch's stash
+		tradeOffer = witch.tradableItems [Random.Range (0, witch.tradableItems.Count)];
 
 		tradeOfferText = tradeOfferText.Replace ("*", tradeOffer.tag);
 		tradeOfferText = tradeOfferText.Replace ("#", tradeSuggestion.tag);
@@ -119,6 +119,9 @@ public class DialogueDisplayer : MonoBehaviour {
 	/* OfferGift
 	 */
 	void OfferGift(){
+		//get a random item to offer up for trade from this witch's stash
+		tradeOffer = witch.giftableItems [Random.Range (0, witch.giftableItems.Count)];
+
 		string giftOfferText = textBlob.Get ("fungusWitchOfferGift");
 		giftOfferText = giftOfferText.Replace ("*", tradeOffer.tag);
 

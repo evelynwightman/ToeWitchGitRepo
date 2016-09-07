@@ -90,6 +90,8 @@ public class PlayerController : MovingObject
 	 * Attacks a foe
 	 */
 	protected virtual void hit(GameObject hitTarget){
+		if (hitTarget == null)
+			return;
 		//handle visuals
 		animator.SetTrigger ("hit");
 		FaceSprite (hitTarget.transform.position);

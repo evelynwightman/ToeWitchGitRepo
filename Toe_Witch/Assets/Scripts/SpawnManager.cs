@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 public class SpawnManager : MonoBehaviour {
 
-	public GameObject villagerPrefab;
+	public GameObject tramplerPrefab;
 
 	private List<GameObject> waitingTramplers = new List<GameObject>();
 
@@ -39,7 +39,7 @@ public class SpawnManager : MonoBehaviour {
 		GameObject trampler;
 		if (waitingTramplers.Count == 0) {
 			//instantiate a new trampler
-			trampler = villagerPrefab;
+			trampler = tramplerPrefab;
 			Quaternion spawnRotation = Quaternion.identity;
 			trampler = (GameObject)Instantiate (trampler, transform.position, spawnRotation);
 			trampler.SetActive (true); //because OnTriggerEnter will deactivate on instantiate
@@ -47,6 +47,9 @@ public class SpawnManager : MonoBehaviour {
 			//activate a waiting trampler
 			trampler = waitingTramplers[0];
 			waitingTramplers.Remove (trampler);
+			//if we pulled a null reference just try again (it's gone now)
+			if (trampler == null)
+				return SpawnTrampler (chanceToDropToe);
 			trampler.SetActive(true);
 			trampler.GetComponent<TramplerController>().Restart();
 

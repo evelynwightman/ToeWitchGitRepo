@@ -8,6 +8,7 @@ using System.Collections.Generic;
 
 public class OtherWitch : MonoBehaviour {
 
+	public List<GameObject> giftableItems = new List<GameObject>();
 	public List<GameObject> tradableItems = new List<GameObject>();
 	public string whichWitch;
 }
