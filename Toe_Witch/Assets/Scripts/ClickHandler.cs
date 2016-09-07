@@ -49,7 +49,6 @@ public class ClickHandler : MonoBehaviour {
 				//if this is an item to pick up from the inventory
 				if (mouseTarget.GetComponent<PickupController>() != null && 
 						mouseTarget.GetComponent<PickupController>().inInventory == true) {
-					Debug.Log ("Dragging a " + mouseTarget.tag);
 					isMouseDrag = true;
 					//flag this to be put down once player gets to where they're putting it
 					player.itemToPutDown = mouseTarget;

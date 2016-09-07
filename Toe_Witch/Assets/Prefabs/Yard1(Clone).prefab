@@ -57,10 +57,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 193568}
-  m_LocalRotation: {x: 0, y: 0, z: -0.29237175, w: 0.9563048}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -34}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 460976}
   m_RootOrder: 0
@@ -71,7 +71,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 155072}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.525002, y: 4.1738515, z: 0}
+  m_LocalPosition: {x: 1.71, y: 4.14, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -85,10 +85,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 150146}
-  m_LocalRotation: {x: 0, y: 0, z: -0.29237175, w: 0.9563048}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -34}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 460976}
   m_RootOrder: 1
@@ -149,8 +149,8 @@ MonoBehaviour:
   isSeed: 0
   adultLifeSpan: 0
   growUpTime: 0
-  seed: {fileID: 0}
-  seedMaterial: {fileID: 0}
+  seed: {fileID: 21300000, guid: 966f124bf6c565642ae5f95b3b97517c, type: 3}
+  seedMaterial: {fileID: 2100000, guid: 4a31622d9162a5d45b242ee80097cabb, type: 2}
   sprout: {fileID: 0}
   sproutMaterial: {fileID: 0}
   adultPlant: {fileID: 21300000, guid: 7bf1f72e2de98fa45b4908113f45413a, type: 3}

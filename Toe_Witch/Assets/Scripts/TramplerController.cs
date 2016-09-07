@@ -98,6 +98,10 @@ public class TramplerController : MovingObject {
 	 * Takes damage and tells us to run away if we're too hurt
 	 */
 	public void TakeDamage(float damage){
+		//stop wrecking
+		StopCoroutine("WreckThisSpot");
+		wrecking = false;
+		animator.SetBool ("wrecking", false);
 		//take damage
 		health = health - damage;
 		//handle visuals
@@ -126,7 +130,6 @@ public class TramplerController : MovingObject {
 	 * Gets a new spot to move to. Simulates indecision. Flips Trampler back and forth for herpTime.
 	 */
 	IEnumerator HerpDerp(){
-		Debug.Log ("Herping");
 		animator.SetBool ("walking", false);
 		while (herpCount < herpTime) {
 			herpSpot = getRandomSpotInYard ();
@@ -141,9 +144,9 @@ public class TramplerController : MovingObject {
 	}
 
 	IEnumerator WreckThisSpot(){
-		Debug.Log ("Wrecking");
 		//animator bool set
 		wrecking = true;
+		animator.SetBool ("wrecking", true);
 		int wreckCount = 0;
 		GameObject plant;
 		while (wreckCount < wreckTime) {
@@ -163,6 +166,7 @@ public class TramplerController : MovingObject {
 			yield return new WaitForSeconds (wreckWait);
 		}
 		wrecking = false;
+		animator.SetBool ("wrecking", false);
 
 		StartCoroutine (HerpDerp ());
 		//animator bool set

@@ -47,9 +47,14 @@ public class GrassController : FloraController {
 		foreach (Transform grass in yard.transform) {
 			if (grass != this.transform) {
 				if (transform.position == grass.position) {
+					Debug.Log (grass);
 					Destroy (grass.gameObject);
 				}
 			}
 		}
+
+		//show adult grass sprite
+		spriteRenderer.sprite = adultPlant;
+		spriteRenderer.material = adultPlantMaterial;
 	}
 }
