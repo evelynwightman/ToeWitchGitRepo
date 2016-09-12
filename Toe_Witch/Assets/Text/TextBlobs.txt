@@ -3,7 +3,7 @@ menuClose Close
 menuOpen Menu
 plantSeedTutorial Time to garden! Drag seeds from my bag to a pot in the nursery to plant them.
 hittingTutorial Looks like someone from the village come to visit. I hate visitors! They always trample up my grass. Click on him to chase him away.
-combineTomatoesTutorial Good thing we got rid of that visitor. If all my grass gets trampled I'm blaming you! (That means you lose the game). But I know just the thing to scare those villagers off. Drag one of those toes onto one of my tomato plants.
+combineTomatoesTutorial Good thing we got rid of that visitor. If all my grass gets trampled I'm blaming you! (That means you lose the game). But I know just the thing to scare those villagers off. Drag one of those toes onto one of my tomato plants. (You may have to wait for it to grow up first.)
 createdTomatoeTutorial Perfect! You've created a tomatoe plant! Drag it anywhere on the yard to plant it. (I'd suggest a spot close to the road.)
 plantStatTutorial Great. Now, plants that have been magicked together aren't too stable, so it'll only last a few days. The yellow dots show how many days it has left. Watch out for its health too. Ain't no plant that likes to be trampled. (Grumble)
 gameOver Game Over
@@ -20,10 +20,11 @@ toeWitchTradeAnother Hm. Can I offer you something else?
 fungusWitchExecuteTrade Thank you! I've always admired your work. Well, I must be off. Some funguses can only be found at night.
 fungusWitchRefuseTrade Oh well. I'll see if I can turn up something else to tempt you. See you later! 
 toeWitchClose Goodbye.
-fungusWitchOfferGift I have this *, but I think you need it more than I do.
+fungusWitchOfferGift I found this *, but I think you have more use for it than I do.
 toeWitchGiftYes Thank you.
-fungusWitchExecuteGift Oh, well.... We witches have to look out for each other, you know. Speaking of which, I have some goodies at home I'd love to trade for one of your special plants if you ever have a spare. See you soon!
+fungusWitchExecuteGift No problem. I have some more exciting goodies at home I'd love to trade for one of your special plants if you ever have a spare. See you soon!
 quitQuery Are you sure you want to quit?
 yes Yes
 no No
 endTutorial This is the end of the tutorial. From here you can continue to play a sample level for as many days as you can survive, but you won't get any new kinds of enemies, toes, or plants until you buy the full version of the game.
+addPots New pots! Now we have a bit more growing space.

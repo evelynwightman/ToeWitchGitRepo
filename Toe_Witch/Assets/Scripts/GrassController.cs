@@ -39,6 +39,8 @@ public class GrassController : FloraController {
 	public override void Plant(){
 		base.Plant ();
 
+		isSeed = false;
+
 		//make us a child of the yard
 		GameObject yard = GameObject.Find("Yard");
 		transform.parent = yard.transform;
@@ -47,7 +49,6 @@ public class GrassController : FloraController {
 		foreach (Transform grass in yard.transform) {
 			if (grass != this.transform) {
 				if (transform.position == grass.position) {
-					Debug.Log (grass);
 					Destroy (grass.gameObject);
 				}
 			}

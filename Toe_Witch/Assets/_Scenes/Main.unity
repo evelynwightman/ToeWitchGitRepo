@@ -129,8 +129,9 @@ RectTransform:
   - {fileID: 326963544}
   - {fileID: 1266906470}
   - {fileID: 1157052042}
+  - {fileID: 815591017}
   m_Father: {fileID: 767754985}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -1284,7 +1285,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: -0.5, y: -0.29, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!95 &254338699
 Animator:
   serializedVersion: 3
@@ -1468,7 +1469,7 @@ RectTransform:
   - {fileID: 97280607}
   - {fileID: 1151057325}
   m_Father: {fileID: 767754985}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -12}
@@ -1998,7 +1999,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
 --- !u!1 &299663882
 GameObject:
   m_ObjectHideFlags: 0
@@ -2323,7 +2324,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
 --- !u!114 &357554147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2765,7 +2766,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 1, y: 7.5}
@@ -4763,7 +4764,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 585241710}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.5, y: 3, z: 0}
+  m_LocalPosition: {x: 3.5, y: 3, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -4775,8 +4776,8 @@ Transform:
   - {fileID: 2141291047}
   - {fileID: 490146172}
   - {fileID: 90774135}
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 1677334641}
+  m_RootOrder: 10
 --- !u!1 &589886233
 GameObject:
   m_ObjectHideFlags: 0
@@ -5628,10 +5629,10 @@ RectTransform:
   - {fileID: 155971421}
   - {fileID: 1023622526}
   - {fileID: 1070131869}
-  - {fileID: 11617641}
   - {fileID: 270628607}
+  - {fileID: 11617641}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -6228,6 +6229,74 @@ Transform:
   - {fileID: 320437330}
   m_Father: {fileID: 1677334641}
   m_RootOrder: 3
+--- !u!1 &815591016
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 815591017}
+  - 222: {fileID: 815591019}
+  - 114: {fileID: 815591018}
+  m_Layer: 5
+  m_Name: Image (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &815591017
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 815591016}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 11617641}
+  m_RootOrder: 4
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 296, y: -33.5}
+  m_SizeDelta: {x: 333, y: 333}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &815591018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 815591016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 38b02a93e4bad6a45a3819b3a1165480, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &815591019
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 815591016}
 --- !u!1 &818895927
 GameObject:
   m_ObjectHideFlags: 0
@@ -8419,7 +8488,7 @@ Transform:
   m_Children:
   - {fileID: 31151563}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
 --- !u!4 &1101220776 stripped
 Transform:
   m_PrefabParentObject: {fileID: 460976, guid: b52d7e353a4fa204d9ac9f310b9f3a7c, type: 2}
@@ -8914,12 +8983,13 @@ MonoBehaviour:
   levelStartDelay: 1
   VillagerSpawnPoint: {fileID: 1106973606}
   ChildSpawnPoint: {fileID: 1383180755}
+  dialogueDisplay: {fileID: 1070131870}
+  boardManager: {fileID: 2010377199}
   tramplerCount: 2
   spawnWait: 10
   startWait: 7
   waveWait: 40
   dayDuration: 40
-  dialogueDisplay: {fileID: 1070131870}
   fungusWitch: {fileID: 31151564}
   fixedLight: {fileID: 254338699}
   dayCycleLightingAnimationClip: {fileID: 7400000, guid: a943c74e7bdcb0b4ea983d58217b623b,
@@ -8935,6 +9005,7 @@ MonoBehaviour:
   - {fileID: 173228, guid: 55e105560dd0b8a43bf880ba3c907e21, type: 2}
   - {fileID: 199170, guid: e204b444a78bd9944a61b304704807d0, type: 2}
   seedPrefab: {fileID: 195182, guid: f3bb0924cb4c49347b9c5c9b35c535bb, type: 2}
+  cheatLevel: 0
   tutorialOn: 1
 --- !u!4 &1154567006
 Transform:
@@ -8950,7 +9021,7 @@ Transform:
   - {fileID: 1106973608}
   - {fileID: 1383180758}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!82 &1154567007
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10054,7 +10125,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
 --- !u!1 &1315455455
 GameObject:
   m_ObjectHideFlags: 0
@@ -12530,6 +12601,7 @@ Transform:
   - {fileID: 2068988651}
   - {fileID: 1570340447}
   - {fileID: 1052264713}
+  - {fileID: 585241711}
   m_Father: {fileID: 0}
   m_RootOrder: 2
 --- !u!1 &1681258099
@@ -14062,6 +14134,7 @@ MonoBehaviour:
   yardSouth: -0.5
   yardEast: 7.5
   yardWest: -0.5
+  potPrefab: {fileID: 186300, guid: 07d2aada589458646a0e8600c5202893, type: 2}
 --- !u!1 &2012417345
 GameObject:
   m_ObjectHideFlags: 0

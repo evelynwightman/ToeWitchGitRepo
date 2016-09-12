@@ -26,7 +26,7 @@ public class TramplerController : MovingObject {
 	private float lifetimeCount; //tracks how long we've been alive
 	private bool entering = true; //are we heading into the yard?
 	private Vector3 herpSpot;
-	private float health;
+	public float health; //public for DEBUGGING
 	private Vector3 exitPoint;
 	private Vector3 entryPoint;
 	private BoxCollider2D boxCollider;
@@ -106,8 +106,8 @@ public class TramplerController : MovingObject {
 		health = health - damage;
 		//handle visuals
 		animator.SetTrigger ("damage");
-		//if we're at 0 health
-		if (health == 0) {
+		//if we're at 0 health and we're not already leaving
+		if (health <= 0 && !leaving) {
 			//run away
 			leaving = true;
 			boxCollider.size = boxCollider.size/4;
@@ -123,7 +123,7 @@ public class TramplerController : MovingObject {
 	 */
 	void DropToe(){
 		Quaternion spawnRotation = Quaternion.identity;
-		toe = (GameObject)Instantiate (toe, transform.position, spawnRotation);
+		Instantiate (toe, transform.position, spawnRotation);
 	}
 
 	/* HerpDerp
@@ -159,7 +159,6 @@ public class TramplerController : MovingObject {
 				} else if (plant.tag == "FightingPlant") {
 					plant.GetComponent<MeleePlantController> ().TakeDamage (tramplage);
 				}
-				//Debug.Log ("Damage");
 			}
 
 			wreckCount ++;

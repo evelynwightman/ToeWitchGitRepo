@@ -45,7 +45,7 @@ public class MeleePlantController : FloraController {
 
 	void Update () {
 		//Deal damage to one trampler which is in range
-		if (inRange.Count != 0 && hitCountdown <= 0) {
+		if (hitTarget != null && hitCountdown <= 0) {
 			hit (hitTarget);
 			hitCountdown = hitRecharge;
 		}
@@ -89,8 +89,9 @@ public class MeleePlantController : FloraController {
 			inRange.Remove (other.gameObject);
 			//if there's something else still in range, hit that instead
 			if (inRange.Count != 0) {
-				hitTarget = inRange [0]; 
-			}
+				hitTarget = inRange [0];
+			} else
+				hitTarget = null;
 		}
 	}
 
@@ -107,7 +108,8 @@ public class MeleePlantController : FloraController {
 		audioSource.clip = hittingSound;
 		audioSource.Play();
 		//deal damage
-		hitTarget.GetComponent<TramplerController> ().TakeDamage (hitStrength);
+		if (hitTarget != null)
+			hitTarget.GetComponent<TramplerController> ().TakeDamage (hitStrength);
 	}
 
 	/* TakeDamage
@@ -117,8 +119,9 @@ public class MeleePlantController : FloraController {
 		base.TakeDamage (damage);
 
 		//update health bar
-		Image healthImage = healthBar.GetComponent<Image>();
+		Image healthImage = healthBar.GetComponent<Image> ();
 		healthImage.fillAmount = (float)health / (float)startingHealth;
+
 		//color health bar
 		if (healthImage.fillAmount <= .3f) {
 			healthImage.color = Color.red;
