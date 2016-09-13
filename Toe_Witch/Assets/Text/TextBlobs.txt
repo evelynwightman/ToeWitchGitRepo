@@ -3,7 +3,7 @@ menuClose Close
 menuOpen Menu
 plantSeedTutorial Time to garden! Drag seeds from my bag to a pot in the nursery to plant them.
 hittingTutorial Looks like someone from the village come to visit. I hate visitors! They always trample up my grass. Click on him to chase him away.
-combineTomatoesTutorial Good thing we got rid of that visitor. If all my grass gets trampled I'm blaming you! (That means you lose the game). But I know just the thing to scare those villagers off. Drag one of those toes onto one of my tomato plants. (You may have to wait for it to grow up first.)
+combineTomatoesTutorial Good thing we got rid of that visitor. If all my grass gets trampled I'm blaming you! (That means you lose the game). But I know just the thing to scare those villagers off. Wait 'till one of my tomato plants grows up, then drag one of those toes onto it.
 createdTomatoeTutorial Perfect! You've created a tomatoe plant! Drag it anywhere on the yard to plant it. (I'd suggest a spot close to the road.)
 plantStatTutorial Great. Now, plants that have been magicked together aren't too stable, so it'll only last a few days. The yellow dots show how many days it has left. Watch out for its health too. Ain't no plant that likes to be trampled. (Grumble)
 gameOver Game Over

@@ -133,7 +133,7 @@ public class MeleePlantController : FloraController {
 
 		//check if dead
 		if (health <= 0) {
-			Die ();
+			StartCoroutine(DeathProtocol());
 		}
 	}
 
@@ -149,10 +149,11 @@ public class MeleePlantController : FloraController {
 		//call base Age()
 		base.Age ();
 		//decrement daysRemainingBar
-		daysRemainingBar.GetComponent<Image> ().fillAmount = daysRemainingBar.GetComponent<Image> ().fillAmount - .1f;
+		float fillAmount = daysRemainingBar.GetComponent<Image> ().fillAmount;
+		daysRemainingBar.GetComponent<Image> ().fillAmount = fillAmount - .1f;
 		//check whether it's time to die
-		if (age >= adultLifeSpan) {
-			Die ();
+		if (fillAmount <= 0) {
+			StartCoroutine (DeathProtocol());
 		}
 	}
 
@@ -172,5 +173,20 @@ public class MeleePlantController : FloraController {
 	 */
 	public void OnDayEnd(){
 		inRange.Clear ();
+	}
+
+	IEnumerator DeathProtocol(){
+		audioSource.clip = deathSound;
+		audioSource.Play ();
+
+		float progress = 0;
+		Color currentColor = Color.white;
+		Color endColor = new Color (1, 1, 1, 0);
+		while (progress < 1) {
+			currentColor = Color.Lerp (Color.white, endColor, progress);
+			progress += .02f / deathSound.length;
+			yield return new WaitForSeconds (0.02f);
+		}
+		Die();
 	}
 } 

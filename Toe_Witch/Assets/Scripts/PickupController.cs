@@ -6,6 +6,7 @@ using UnityEngine;
 using System.Collections;
 
 public class PickupController : MonoBehaviour {
+	public string itemName;
 	public bool inInventory = false;
 	public bool pickable;
 	public GameObject pot = null;

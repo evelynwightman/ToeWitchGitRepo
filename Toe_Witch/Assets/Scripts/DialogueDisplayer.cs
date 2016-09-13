@@ -108,8 +108,8 @@ public class DialogueDisplayer : MonoBehaviour {
 		//get a random item to offer up for trade from this witch's stash
 		tradeOffer = witch.tradableItems [Random.Range (0, witch.tradableItems.Count)];
 
-		tradeOfferText = tradeOfferText.Replace ("*", tradeOffer.tag);
-		tradeOfferText = tradeOfferText.Replace ("#", tradeSuggestion.tag);
+		tradeOfferText = tradeOfferText.Replace ("*", tradeOffer.GetComponent<PickupController>().itemName);
+		tradeOfferText = tradeOfferText.Replace ("#", tradeSuggestion.GetComponent<PickupController>().itemName);
 
 		SetUpText(tradeOfferText, textBlob.Get("toeWitchTradeYes"), 
 			textBlob.Get("toeWitchTradeNo"), textBlob.Get("toeWitchTradeAnother"));
@@ -123,7 +123,7 @@ public class DialogueDisplayer : MonoBehaviour {
 		tradeOffer = witch.giftableItems [Random.Range (0, witch.giftableItems.Count)];
 
 		string giftOfferText = textBlob.Get ("fungusWitchOfferGift");
-		giftOfferText = giftOfferText.Replace ("*", tradeOffer.tag);
+		giftOfferText = giftOfferText.Replace ("*", tradeOffer.GetComponent<PickupController>().itemName);
 
 		SetUpText(giftOfferText, textBlob.Get("toeWitchGiftYes"));
 		Choice(new UnityAction (ExecuteGift));
