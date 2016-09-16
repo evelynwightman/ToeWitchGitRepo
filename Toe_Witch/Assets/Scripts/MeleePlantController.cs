@@ -180,10 +180,9 @@ public class MeleePlantController : FloraController {
 		audioSource.Play ();
 
 		float progress = 0;
-		Color currentColor = Color.white;
 		Color endColor = new Color (1, 1, 1, 0);
 		while (progress < 1) {
-			currentColor = Color.Lerp (Color.white, endColor, progress);
+			transform.GetComponent<Image> ().color = Color.Lerp (Color.white, endColor, progress);
 			progress += .02f / deathSound.length;
 			yield return new WaitForSeconds (0.02f);
 		}

@@ -113,7 +113,12 @@ public class DialogueDisplayer : MonoBehaviour {
 
 		SetUpText(tradeOfferText, textBlob.Get("toeWitchTradeYes"), 
 			textBlob.Get("toeWitchTradeNo"), textBlob.Get("toeWitchTradeAnother"));
-		Choice(new UnityAction(ExecuteTrade), new UnityAction(RefuseTrade), new UnityAction(OfferTrade));
+		Choice(new UnityAction(ExecuteTrade), new UnityAction(RefuseTrade), new UnityAction(NoneLeft));
+	}
+
+	void NoneLeft(){
+		SetUpText(textBlob.Get("noneLeftText"), textBlob.Get("toeWitchClose"));
+		Choice(new UnityAction(Close));
 	}
 
 	/* OfferGift

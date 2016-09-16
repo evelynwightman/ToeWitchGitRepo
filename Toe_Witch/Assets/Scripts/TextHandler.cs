@@ -11,6 +11,7 @@ using System.IO;
 public class TextHandler : MonoBehaviour {
 
 	public TextAsset textFile;
+	public TextAsset creditsFile;
 
 	private Dictionary<string, string> textBlobs = new Dictionary<string, string>();
 
@@ -38,6 +39,9 @@ public class TextHandler : MonoBehaviour {
 			}
 
 		}
+
+		//add credits to dict
+		textBlobs.Add ("credits", creditsFile.text);
 	}
 
 	/* GetText

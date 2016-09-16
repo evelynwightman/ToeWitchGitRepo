@@ -17,14 +17,15 @@ fungusWitchOfferTrade I found this * and thought of you. I'll trade it to you fo
 toeWitchTradeYes Deal.
 toeWitchTradeNo I don't think so.
 toeWitchTradeAnother Hm. Can I offer you something else?
-fungusWitchExecuteTrade Thank you! I've always admired your work. Well, I must be off. Some funguses can only be found at night.
+fungusWitchExecuteTrade Thank you! I've always admired your work. Well, I must be off. Some fungi can only be found at night.
 fungusWitchRefuseTrade Oh well. I'll see if I can turn up something else to tempt you. See you later! 
 toeWitchClose Goodbye.
 fungusWitchOfferGift I found this *, but I think you have more use for it than I do.
 toeWitchGiftYes Thank you.
-fungusWitchExecuteGift No problem. I have some more exciting goodies at home I'd love to trade for one of your special plants if you ever have a spare. See you soon!
+fungusWitchExecuteGift No problem. I have some more exciting goodies at home I'd love to trade for one of your special plants if you ever have one left in your bag at the end of the day. See you soon!
 quitQuery Are you sure you want to quit?
 yes Yes
 no No
 endTutorial This is the end of the tutorial. From here you can continue to play a sample level for as many days as you can survive, but you won't get any new kinds of enemies, toes, or plants until you buy the full version of the game.
 addPots New pots! Now we have a bit more growing space.
+noneLeftText I'm sorry, but I don't have anything else at the moment. Maybe next time.
