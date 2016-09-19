@@ -201,7 +201,8 @@ AudioSource:
   m_GameObject: {fileID: 199170}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24397578, guid: 45758fffcd14091438c3e5ba9b476d5f,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: a820713cfbe60964ab635af40cd94f3d, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -398,6 +399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bb1cdfac3cfc88448bedb07f7624e1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemName: tomatoe plant
   inInventory: 0
   pickable: 1
   pot: {fileID: 0}
@@ -417,6 +419,7 @@ MonoBehaviour:
   adultLifeSpan: 2
   growUpTime: 1
   growthBar: {fileID: 0}
+  nightAging: 0
   seed: {fileID: 21300062, guid: 8732c811ac3ea664094d2081357e1c52, type: 3}
   seedMaterial: {fileID: 0}
   sprout: {fileID: 21300042, guid: 8732c811ac3ea664094d2081357e1c52, type: 3}
@@ -427,7 +430,10 @@ MonoBehaviour:
   growUpSound: {fileID: 8300000, guid: 1ad2ab393729f1b40ba2865d30bc488a, type: 3}
   plantingSound: {fileID: 8300000, guid: d05de52cd54af944aad92dea6285c595, type: 3}
   hittingSound: {fileID: 8300000, guid: a820713cfbe60964ab635af40cd94f3d, type: 3}
+  deathSound: {fileID: 8300000, guid: 388697afceb61284790f7373f3a4e7c0, type: 3}
   health: 0
+  age: 0
+  audioSource: {fileID: 0}
   hitStrength: 1
   hitRecharge: 0.5
 --- !u!114 &11486984

@@ -143,6 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bb1cdfac3cfc88448bedb07f7624e1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemName: toe
   inInventory: 0
   pickable: 1
   pot: {fileID: 0}

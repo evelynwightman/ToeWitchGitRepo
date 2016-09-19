@@ -6,19 +6,16 @@
 using UnityEngine;
 using System.Collections;
 
-public class PotController : MonoBehaviour {
+public class PotController : StaticObjectController {
 
 	public float startingHealth;
 
 	private GameObject plant;
 	private float health;
-	private SpriteRenderer spriteRenderer;
+
 
 	void Start () {
-		spriteRenderer = GetComponent<SpriteRenderer> ();
-	
-		//keep everything overlapping according to y position
-		spriteRenderer.sortingOrder = Mathf.RoundToInt(transform.position.y * 100f) * -1;
+		base.Start ();
 	}
 
 	/* OnTriggerEnter2D
