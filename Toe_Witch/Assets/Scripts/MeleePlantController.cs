@@ -152,7 +152,7 @@ public class MeleePlantController : FloraController {
 		float fillAmount = daysRemainingBar.GetComponent<Image> ().fillAmount;
 		daysRemainingBar.GetComponent<Image> ().fillAmount = fillAmount - .1f;
 		//check whether it's time to die
-		if (fillAmount <= 0) {
+		if (fillAmount - .1f <= 0) {
 			StartCoroutine (DeathProtocol());
 		}
 	}
@@ -173,6 +173,7 @@ public class MeleePlantController : FloraController {
 	 */
 	public void OnDayEnd(){
 		inRange.Clear ();
+		hitTarget = null;
 	}
 
 	IEnumerator DeathProtocol(){
@@ -182,7 +183,8 @@ public class MeleePlantController : FloraController {
 		float progress = 0;
 		Color endColor = new Color (1, 1, 1, 0);
 		while (progress < 1) {
-			transform.GetComponent<Image> ().color = Color.Lerp (Color.white, endColor, progress);
+			Debug.Log ("progress = " + progress);
+			transform.GetComponent<SpriteRenderer> ().color = Color.Lerp (Color.white, endColor, progress);
 			progress += .02f / deathSound.length;
 			yield return new WaitForSeconds (0.02f);
 		}

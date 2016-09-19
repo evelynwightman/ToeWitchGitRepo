@@ -3,7 +3,7 @@ menuClose Close
 menuOpen Menu
 plantSeedTutorial Time to garden! Drag seeds from my bag to a pot in the nursery to plant them.
 hittingTutorial Looks like someone from the village come to visit. I hate visitors! They always trample up my grass. Click on him to chase him away.
-combineTomatoesTutorial Good thing we got rid of that visitor. If all my grass gets trampled I'm blaming you! (That means you lose the game). But I know just the thing to scare those villagers off. Wait 'till one of my tomato plants grows up, then drag one of those toes onto it.
+combineTomatoesTutorial Good thing we got rid of that visitor. If all my grass gets trampled I'm blaming you! (And you lose the game). But I know just the thing to scare those villagers off. Wait 'till one of my tomato plants grows up, then drag one of those toes onto it.
 createdTomatoeTutorial Perfect! You've created a tomatoe plant! Drag it anywhere on the yard to plant it. (I'd suggest a spot close to the road.)
 plantStatTutorial Great. Now, plants that have been magicked together aren't too stable, so it'll only last a few days. The yellow dots show how many days it has left. Watch out for its health too. Ain't no plant that likes to be trampled. (Grumble)
 gameOver Game Over
@@ -16,7 +16,7 @@ fungusWitchLeave Alright. Take care, dear.
 fungusWitchOfferTrade I found this * and thought of you. I'll trade it to you for that # of yours.
 toeWitchTradeYes Deal.
 toeWitchTradeNo I don't think so.
-toeWitchTradeAnother Hm. Can I offer you something else?
+toeWitchTradeAnother Hm. Do you have anything else?
 fungusWitchExecuteTrade Thank you! I've always admired your work. Well, I must be off. Some fungi can only be found at night.
 fungusWitchRefuseTrade Oh well. I'll see if I can turn up something else to tempt you. See you later! 
 toeWitchClose Goodbye.

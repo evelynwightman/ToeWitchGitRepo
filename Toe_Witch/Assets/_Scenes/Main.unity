@@ -425,12 +425,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 33854468}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.33, y: 2.89, z: 0}
+  m_LocalPosition: {x: -467.55478, y: -300.1415, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_Father: {fileID: 543779279}
+  m_RootOrder: 3
 --- !u!4 &43445271 stripped
 Transform:
   m_PrefabParentObject: {fileID: 460976, guid: b52d7e353a4fa204d9ac9f310b9f3a7c, type: 2}
@@ -1922,12 +1922,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 273217809}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.060567796, y: 3.1374567, z: 0}
+  m_LocalPosition: {x: -467.94534, y: -299.89407, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_Father: {fileID: 543779279}
+  m_RootOrder: 4
 --- !u!1 &274241856
 GameObject:
   m_ObjectHideFlags: 0
@@ -2103,12 +2103,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 274808397}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.061, y: 3.1633344, z: 0}
+  m_LocalPosition: {x: -467.94577, y: -299.8682, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_Father: {fileID: 543779279}
+  m_RootOrder: 1
 --- !u!1 &276216936
 GameObject:
   m_ObjectHideFlags: 0
@@ -5008,6 +5008,39 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 1
+--- !u!1 &543779278
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 543779279}
+  m_Layer: 0
+  m_Name: Fence
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &543779279
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 543779278}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 467.88477, y: 303.03152, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children:
+  - {fileID: 1194777891}
+  - {fileID: 274808399}
+  - {fileID: 651162062}
+  - {fileID: 33854470}
+  - {fileID: 273217811}
+  m_Father: {fileID: 1677334641}
+  m_RootOrder: 12
 --- !u!1 &546564341
 GameObject:
   m_ObjectHideFlags: 0
@@ -5937,12 +5970,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 651162060}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.077819556, y: 3.17196, z: 0}
+  m_LocalPosition: {x: -467.9626, y: -299.85956, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_Father: {fileID: 543779279}
+  m_RootOrder: 2
 --- !u!1 &664372959
 GameObject:
   m_ObjectHideFlags: 0
@@ -9159,7 +9192,7 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -597, y: -387.40002}
+  m_AnchoredPosition: {x: -576.9, y: -387.40002}
   m_SizeDelta: {x: 1153.8, y: 774.80005}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1023622527
@@ -11277,12 +11310,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1194777889}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.072, y: 3.11, z: 0}
+  m_LocalPosition: {x: -467.95676, y: -299.92154, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_Father: {fileID: 543779279}
+  m_RootOrder: 0
 --- !u!1 &1200645757
 GameObject:
   m_ObjectHideFlags: 0
@@ -14919,6 +14952,7 @@ Transform:
   - {fileID: 1570340447}
   - {fileID: 1052264713}
   - {fileID: 585241711}
+  - {fileID: 543779279}
   m_Father: {fileID: 0}
   m_RootOrder: 2
 --- !u!1 &1681258099

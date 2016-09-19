@@ -5,7 +5,7 @@ public class StaticObjectController : MonoBehaviour {
 
 	protected SpriteRenderer spriteRenderer;
 
-	protected void Start () {
+	protected virtual void Start () {
 		spriteRenderer = GetComponent<SpriteRenderer> ();
 
 		//keep everything overlapping according to y position

@@ -14,7 +14,7 @@ public class PotController : StaticObjectController {
 	private float health;
 
 
-	void Start () {
+	protected override void Start () {
 		base.Start ();
 	}
 

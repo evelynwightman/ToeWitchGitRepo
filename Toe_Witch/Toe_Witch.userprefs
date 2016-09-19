@@ -1,16 +1,21 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\FloraController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\MeleePlantController.cs">
     <Files>
-      <File FileName="Assets\Scripts\FloraController.cs" Line="36" Column="36" />
-      <File FileName="Assets\Scripts\GameManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\MovingObject.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\FloraController.cs" Line="121" Column="15" />
+      <File FileName="Assets\Scripts\MeleePlantController.cs" Line="167" Column="53" />
+      <File FileName="Assets\Scripts\GameManager.cs" Line="88" Column="1" />
       <File FileName="Assets\Scripts\InventoryController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\OtherWitch.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\DialogueDisplayer.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\TramplerController.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\BoardManager.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\PickupController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PlayerController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\MenuController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\MeleePlantController.cs" Line="29" Column="46" />
+      <File FileName="Assets\Scripts\ClickHandler.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\YesNoHandler.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\TextHandler.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PotController.cs" Line="17" Column="26" />
+      <File FileName="Assets\Scripts\StaticObjectController.cs" Line="15" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
