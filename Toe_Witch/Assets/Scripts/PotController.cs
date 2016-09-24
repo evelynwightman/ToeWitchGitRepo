@@ -1,6 +1,8 @@
 ﻿/* PotController
- * Evelyn Wightman 2016
- * Attached to pots. Handles damage and putting them in the correct sorting layer.
+ * Attached to pots. Handles damage and putting them in the correct sorting layer. (Note: Pots aren't fully set up with health and breaking yet)
+ * 
+ * Copyright (c) 2016 by Evelyn Wightman. All rights reserved. 
+ * Subject to the terms and conditions contained in LICENSE file.
  */
 
 using UnityEngine;
@@ -47,11 +49,17 @@ public class PotController : StaticObjectController {
 		*/
 	}
 
+	/* SetPlant
+	 * Called when a plant is planted in this pot so we know it's in us.
+	 */
 	public void setPlant(GameObject newPlant)
 	{
 		plant = newPlant;
 	}
 
+	/* hasPlant
+	 * Is there a plant in us Y/N
+	 */
 	public bool hasPlant(){
 		if (plant == null)
 			return false;

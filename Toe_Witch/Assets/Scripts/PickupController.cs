@@ -1,6 +1,8 @@
 ﻿/* PickupController
- * Evelyn Wightman 2016
  * Attached to anything that can be picked up. Handles being picked up, managing its shadow, and knowing where it can go.
+ * 
+ * Copyright (c) 2016 by Evelyn Wightman. All rights reserved. 
+ * Subject to the terms and conditions contained in LICENSE file.
  */
 using UnityEngine;
 using System.Collections;

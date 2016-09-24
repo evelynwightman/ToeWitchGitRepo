@@ -1,6 +1,8 @@
 ﻿/* PlayerController
- * Evelyn Wightman 2016
  * Modified from PlayerController.cs from Unity 2D Roguelike Tutorial
+ * 
+ * Copyright (c) 2016 by Evelyn Wightman. All rights reserved. 
+ * Subject to the terms and conditions contained in LICENSE file.
  */
 
 using UnityEngine;

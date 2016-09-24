@@ -1,8 +1,10 @@
 ﻿/* ObjectCombiner
- * Evelyn Wightman 2016
  * Lives on the Clickable aspect of toes. When the player puts down a toe, she will call Combine to see if there's 
  * anything there the toe should combine with. Handles checking the recipes, creating the new hybrid plant, and 
  * destroying the toe and old plant.
+ * 
+ * Copyright (c) 2016 by Evelyn Wightman. All rights reserved. 
+ * Subject to the terms and conditions contained in LICENSE file.
  */
 using UnityEngine;
 using System.Collections;

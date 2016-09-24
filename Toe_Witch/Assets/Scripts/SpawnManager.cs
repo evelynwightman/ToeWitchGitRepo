@@ -1,6 +1,8 @@
 ﻿/* SpawnManager
- * Evelyn Wightman 2016
  * Spawns Tramplers. When tramplers return to the spawn point, it re-deploys them rather than create a new one.
+ * 
+ * Copyright (c) 2016 by Evelyn Wightman. All rights reserved. 
+ * Subject to the terms and conditions contained in LICENSE file.
  */
 
 using UnityEngine;

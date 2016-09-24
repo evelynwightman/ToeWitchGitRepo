@@ -1,7 +1,10 @@
 /* MenuController
- * Evelyn Wightman 2016
  * Handles the main menu.
+ * 
+ * Copyright (c) 2016 by Evelyn Wightman. All rights reserved. 
+ * Subject to the terms and conditions contained in LICENSE file.
  */
+
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;

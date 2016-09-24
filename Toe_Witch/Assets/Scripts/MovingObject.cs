@@ -1,7 +1,9 @@
 ﻿/* MovingObject
- * Evelyn Wightman 2016
- * Base class for objects which move around under their own volition (player, tramplers). 
+ * Base class for objects which move around under their own volition (player, tramplers, etc). 
  * Handles moving in yard, facing the right direction for your movement, and updating sorting order based on position
+ * 
+ * Copyright (c) 2016 by Evelyn Wightman. All rights reserved. 
+ * Subject to the terms and conditions contained in LICENSE file.
  */
 using UnityEngine;
 using System.Collections;

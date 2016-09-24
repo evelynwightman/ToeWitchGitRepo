@@ -1,8 +1,10 @@
 ﻿/* DialogueDisplayer
- * Evelyn Wightman 2016
  * Attached to DialoguePanel. Handles dialogue flow (provides otherWitch text, sets response options, repeats). 
  * Called by GameManager via public fcn StartConversation. At each dialogue step, text is set and each button is 
  * a UnityAction which calls the next step in the conversation flow.
+ * 
+ * Copyright (c) 2016 by Evelyn Wightman. All rights reserved. 
+ * Subject to the terms and conditions contained in LICENSE file.
  */
 using UnityEngine;
 using UnityEngine.UI;

@@ -1,6 +1,8 @@
 ﻿/* MeleePlantController
- * Evelyn Wightman 2016
  * Child class of FloraController. Controlls fighting plants. Adds hitting, health bar, and limited lifespan.
+ * 
+ * Copyright (c) 2016 by Evelyn Wightman. All rights reserved. 
+ * Subject to the terms and conditions contained in LICENSE file.
  */
 
 using UnityEngine;

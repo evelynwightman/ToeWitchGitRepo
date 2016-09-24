@@ -1,7 +1,10 @@
 ﻿/* ClickHandler
- * Evelyn Wightman 2016
  * Handles mouse clicks and dragging. Tells player where to walk to and what to put down.
+ * 
+ * Copyright (c) 2016 by Evelyn Wightman. All rights reserved. 
+ * Subject to the terms and conditions contained in LICENSE file.
  */
+
 
 using UnityEngine;
 using System.Collections;
@@ -20,8 +23,10 @@ public class ClickHandler : MonoBehaviour {
 		player = GameObject.Find ("Player").GetComponent<PlayerController>();
 	}
 
+	/* ChillOut
+	 *  cancel whatever item movement we had going on (used at level ends, etc)
+	 */
 	public void ChillOut(){
-		//cancel whatever item movement we had going on
 		if (player.itemToPutDown != null) {
 			player.itemToPutDown.GetComponent<PickupController>().returnShadow();
 			player.itemToPutDown.transform.GetComponent<SpriteRenderer> ().color = new Color (1f, 1f, 1f, 1f);

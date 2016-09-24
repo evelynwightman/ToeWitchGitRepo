@@ -1,6 +1,8 @@
 ﻿/* TramplerController
- * Evelyn Wightman 2016
- * What it says on the tin.
+ * Controlls Tramplers. 
+ * 
+ * Copyright (c) 2016 by Evelyn Wightman. All rights reserved. 
+ * Subject to the terms and conditions contained in LICENSE file.
  */
 using UnityEngine;
 using System.Collections;
@@ -143,6 +145,9 @@ public class TramplerController : MovingObject {
 		animator.SetBool ("walking", true);
 	}
 
+	/* WreckThisSpot
+	 * For children: sit and do damage for wreckTime, then herpDerp for a new place to go.
+	 */
 	IEnumerator WreckThisSpot(){
 		//animator bool set
 		wrecking = true;

@@ -1,7 +1,9 @@
 ﻿/* InventoryController
- * Evelyn Wightman 2016
  * Contains TWO CLASSES, an INVENTORY which manages adding and removing items to/from inventory and organizing 
  * them within it, and a SLOT which manages the contents of a single slot in inventory.
+ * 
+ * Copyright (c) 2016 by Evelyn Wightman. All rights reserved. 
+ * Subject to the terms and conditions contained in LICENSE file.
  */
 
 /* Slot Class
@@ -65,7 +67,6 @@ public class Slot{
 	}
 
 }
-
 
 /* InventoryController Class
  * Manages adding and removing items to/from inventory and organizing them within it.

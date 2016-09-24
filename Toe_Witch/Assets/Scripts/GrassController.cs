@@ -1,7 +1,10 @@
 ﻿/* Grass Controller
- * Evelyn Wightman 2016
  * Child class of FloraController. Controls grass.
+ * 
+ * Copyright (c) 2016 by Evelyn Wightman. All rights reserved. 
+ * Subject to the terms and conditions contained in LICENSE file.
  */
+
 using UnityEngine;
 using System.Collections;
 
@@ -13,7 +16,7 @@ public class GrassController : FloraController {
 	public float trampledHealthBar;
 	public Sprite trampledHealth;
 	public Sprite dirt;
-	//[HideInInspector]
+	[HideInInspector]
 	public bool isDead = false;
 
 	protected override void Start () {
@@ -36,6 +39,9 @@ public class GrassController : FloraController {
 		} 
 	}
 
+	/* Plant
+	 * Adds yard management stuff to Plant. 
+	 */
 	public override void Plant(){
 		base.Plant ();
 

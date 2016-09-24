@@ -1,6 +1,8 @@
 ﻿/* TextHandler
- * Evelyn Wightman 2016
- * Reads text in from file and stores it in a dictionary. Public Get allows text to be fetched by key.
+ * Reads text in from file and stores it in a dictionary. Public Get() allows text to be fetched by key.
+ * 
+ * Copyright (c) 2016 by Evelyn Wightman. All rights reserved. 
+ * Subject to the terms and conditions contained in LICENSE file.
  */
 
 using UnityEngine;

@@ -1,7 +1,9 @@
 ﻿/* YesNoHandler
- * Evelyn Wightman 2016
  * Attached to a yes/no popup box. Public function PoseQuestion allows outside script to set question text and 
  * desired 'yes' outcome. 'No' outcome is always nothing.
+ * 
+ * Copyright (c) 2016 by Evelyn Wightman. All rights reserved. 
+ * Subject to the terms and conditions contained in LICENSE file.
  */
 
 using UnityEngine;
