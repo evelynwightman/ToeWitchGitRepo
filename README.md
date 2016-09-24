@@ -3,4 +3,4 @@ Toe Witch (working title) is a tower-defense-like game where the Toe Witch must 
 
 The folder Toe_Witch contains the full Unity project. Scripts can be found in Toe_Witch > Assets > Scripts.
 
-I created this project almost completely from scratch, with the only downloaded assets being sound effects. The goal of the project was to gain new skills and create something to showcase my abilities. 
+A playable version of the game can be downloaded from https://www.dropbox.com/sh/cdo8p7g3gn8jc2d/AABrubx3dFQ4zcDtnLZoy4xZa?dl=0
